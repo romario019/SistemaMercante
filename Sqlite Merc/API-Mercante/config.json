@@ -1,0 +1,1343 @@
+{
+  "checklistsData": {
+    "Empilhadeira Elétrica": [
+      { "text": "Operador está habilitado a operar o equipamento?", "gravity": "CRÍTICO" },
+      { "text": "O operador possui identificação da função no crachá?", "gravity": "MÉDIO" },
+      { "text": "O crachá de identificação está em local visível?", "gravity": "BAIXO" },
+      { "text": "O operador foi orientado quanto a importância do uso e conservação dos EPI´s (calçado de segurança e protetor auditivo), necessários à execução de suas atividades?", "gravity": "MÉDIO" },
+      { "text": "O freio de estacionamento está funcionando corretamente sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "O nível de carga da bateria está normal?", "gravity": "MÉDIO" },
+      { "text": "O nível de água destilada da bateria está normal?", "gravity": "MÉDIO" },
+      { "text": "Os cabos e terminais da bateria estão em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "A torre, corrente e garfos estão em boas condições de uso?", "gravity": "CRÍTICO" },
+      { "text": "A empilhadeira possui ré sonora e está funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "O Sinal sonoro (buzina) está funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "O Giroflex está funcionando?", "gravity": "MÉDIO" },
+      { "text": "O sistema hidráulico (mangueiras e bomba) está livre de aspetos que indiquem vazamento de óleo?", "gravity": "CRÍTICO" },
+      { "text": "A direção está alinhada?", "gravity": "CRÍTICO" },
+      { "text": "O sistema de frenagem (testado pelo operador no momento da inspeção) funciona sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "O cinto de segurança está em boas condições de uso?", "gravity": "CRÍTICO" },
+      { "text": "Os botões de comando de elevação da torre estão funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "Os botões de emergência estão funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "Os pneus estão em boas condições?", "gravity": "CRÍTICO" },
+      { "text": "O visual externo da empilhadeira encontra-se em bom estado de conservação?", "gravity": "BAIXO" },
+      { "text": "A empilhadeira está com os retrovisores em boas condições de uso?", "gravity": "MÉDIO" },
+      { "text": "A empilhadeira possui extintor de incêndio com carga plena, na validade e com lacre de segurança perfeito?", "gravity": "CRÍTICO" }
+    ],
+    "Empilhadeira a Combustão": [
+      { "text": "O nível de água do radiador está normal?", "gravity": "MÉDIO" },
+      { "text": "O nível do óleo do motor está normal?", "gravity": "CRÍTICO" },
+      { "text": "O nível de óleo do freio está normal?", "gravity": "CRÍTICO" },
+      { "text": "A empilhadeira possui, em local visível, a indicação de carga máxima de trabalho permitida?", "gravity": "BAIXO" },
+      { "text": "A buzina está funcionando corretamente para advertência?", "gravity": "CRÍTICO" },
+      { "text": "Os faróis, lanternas e luzes de freio estão funcionando normal?", "gravity": "CRÍTICO" },
+      { "text": "A pressão do pedal e da trava de freio está normal?", "gravity": "CRÍTICO" },
+      { "text": "O sistema de frenagem opera perfeitamente sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "O extintor de incêndio está na validade e com o lacre de segurança em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "Os pneus estão calibrados?", "gravity": "MÉDIO" },
+      { "text": "O desgaste dos pneus está dentro do limite permitido pela marcação?", "gravity": "CRÍTICO" },
+      { "text": "O operador é treinado e habilitado para a função?", "gravity": "CRÍTICO" },
+      { "text": "As rodas encontram-se em bom estado, sem estarem tortas ou danificadas?", "gravity": "CRÍTICO" },
+      { "text": "A direção está firme e fácil de manobrar, sem folgas?", "gravity": "CRÍTICO" },
+      { "text": "O crachá de identificação está em local visível?", "gravity": "BAIXO" },
+      { "text": "A máquina está livre de vazamentos de água, óleo ou gás?", "gravity": "CRÍTICO" },
+      { "text": "O sistema hidráulico de movimentação está funcionando corretamente?", "gravity": "CRÍTICO" },
+      { "text": "O cinto de segurança está em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "O berço ou carcaça do botijão está em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "Os cabos das baterias estão justos e sem desgastes?", "gravity": "CRÍTICO" },
+      { "text": "Os garfos encontram-se alinhados?", "gravity": "CRÍTICO" },
+      { "text": "As alavancas de comando da torre operam sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "As correntes encontram-se em perfeito estado, sem trincas ou ruídos estranhos?", "gravity": "CRÍTICO" },
+      { "text": "Está a usar todos os EPIs (bota c/ biqueira de aço, abafador, cinto de segurança)?", "gravity": "CRÍTICO" },
+      { "text": "O visual externo da empilhadeira encontra-se em bom estado de conservação?", "gravity": "BAIXO" }
+    ],
+    "Transpaleteira": [
+      {
+        "text": "A buzina está funcionando corretamente?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "O botão de emergência (barriga / reversão de segurança) funciona corretamente?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O botão de parada de emergência desliga o equipamento corretamente?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O freio de serviço para completamente o equipamento?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O timão retorna à posição neutra corretamente após o uso?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "O acelerador responde suavemente sem travamentos ou falhas?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os garfos sobem e descem normalmente sem perda de força?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A elevação da carga ocorre sem ruídos ou movimentos bruscos?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Existe vazamento de óleo hidráulico na bomba, mangueiras ou conexões?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "As rodas apresentam cortes, rachaduras ou desgaste excessivo?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "As rodas giram livremente sem travamento?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Existe acúmulo de resíduos (plástico, fita, corda) nas rodas?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "Há vibração ou ruído anormal durante a movimentação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os garfos apresentam trincas, deformações ou desalinhamento?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A estrutura do equipamento apresenta trincas ou avarias visíveis?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "Existe algum componente solto (parafusos, proteções ou suportes)?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os cabos e conectores da bateria estão em bom estado?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O encaixe da bateria está firme e sem folgas?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O nível de carga da bateria é suficiente para o turno?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Há sinais de aquecimento, cheiro de queimado ou danos nos cabos?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A carcaça apresenta danos que possam comprometer a operação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "O equipamento está limpo e sem resíduos que possam interferir na operação?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "A identificação do equipamento (patrimônio / etiqueta) está visível?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "Estado da bateria da transpaleteira está adequado para operação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os controles operacionais (botões, acionamentos e comandos) da transpaleteira apresentam funcionamento adequado, sem falhas ou travamentos?",
+        "gravity": "CRÍTICO"
+      }
+    ],
+    "Paleteira": [
+      {
+        "text": "A paleteira eleva a carga nominal sem perda de pressão ou descida involuntária?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O sistema hidráulico responde corretamente ao bombeamento do timão?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A descida da carga ocorre de forma suave e controlada?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "Existe vazamento de óleo hidráulico na bomba, cilindro ou conexões?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "O nível de óleo hidráulico está adequado e sem sinais de contaminação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "As rodas de carga estão em bom estado (sem desgaste excessivo, rachaduras ou travamento)?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "As rodas direcionais giram livremente sem ruído ou resistência?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Existe acúmulo de resíduos (plástico, fita, corda, sujeira) nas rodas ou eixos?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "Há vibração ou ruído anormal durante a movimentação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os garfos apresentam trincas, deformações ou empenamento?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A estrutura da paleteira apresenta trincas, soldas quebradas ou deformações?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "Os garfos estão alinhados e sem desgaste excessivo nas pontas?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "O timão está firme e sem folgas excessivas?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "A mola de retorno do timão funciona corretamente?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "A alavanca de controle (subir / neutro / descer) funciona corretamente?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "Eixos, pinos e parafusos estão bem fixados e sem folgas?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Há desgaste excessivo nas articulações do sistema de elevação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Os pontos de lubrificação estão adequadamente engraxados?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "As articulações e pinos apresentam sinais de falta de lubrificação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "Há ruídos anormais indicativos de atrito ou falta de lubrificação?",
+        "gravity": "MÉDIO"
+      },
+      {
+        "text": "A paleteira está limpa e sem resíduos que possam comprometer o funcionamento?",
+        "gravity": "BAIXO"
+      },
+      {
+        "text": "Existe alguma avaria visível no equipamento que comprometa a operação?",
+        "gravity": "CRÍTICO"
+      },
+      {
+        "text": "A identificação do equipamento (nº patrimônio / etiqueta) está visível?",
+        "gravity": "BAIXO"
+      }
+    ]
+  },
+  "forkliftsData": {
+    "Empilhadeira a Combustão": [
+      {
+        "label": "04",
+        "value": "04"
+      }
+    ],
+    "Empilhadeira Elétrica": [
+      {
+        "label": "01",
+        "value": "01"
+      },
+      {
+        "label": "02",
+        "value": "02"
+      },
+      {
+        "label": "03",
+        "value": "03"
+      }
+    ],
+    "Transpaleteira": [
+      {
+        "label": "01",
+        "value": "01"
+      }
+    ],
+    "Paleteira": [
+      {
+        "label": "01",
+        "value": "01"
+      },
+      {
+        "label": "02",
+        "value": "02"
+      },
+      {
+        "label": "03",
+        "value": "03"
+      },
+      {
+        "label": "04",
+        "value": "04"
+      },
+      {
+        "label": "05",
+        "value": "05"
+      },
+      {
+        "label": "06",
+        "value": "06"
+      },
+      {
+        "label": "07",
+        "value": "07"
+      },
+      {
+        "label": "08",
+        "value": "08"
+      },
+      {
+        "label": "09",
+        "value": "09"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      },
+      {
+        "label": "11",
+        "value": "11"
+      },
+      {
+        "label": "12",
+        "value": "12"
+      },
+      {
+        "label": "13",
+        "value": "13"
+      },
+      {
+        "label": "14",
+        "value": "14"
+      },
+      {
+        "label": "15",
+        "value": "15"
+      },
+      {
+        "label": "16",
+        "value": "16"
+      },
+      {
+        "label": "17",
+        "value": "17"
+      },
+      {
+        "label": "18",
+        "value": "18"
+      },
+      {
+        "label": "19",
+        "value": "19"
+      },
+      {
+        "label": "20",
+        "value": "20"
+      },
+      {
+        "label": "21",
+        "value": "21"
+      },
+      {
+        "label": "22",
+        "value": "22"
+      },
+      {
+        "label": "23",
+        "value": "23"
+      },
+      {
+        "label": "24",
+        "value": "24"
+      },
+      {
+        "label": "25",
+        "value": "25"
+      },
+      {
+        "label": "26",
+        "value": "26"
+      },
+      {
+        "label": "27",
+        "value": "27"
+      },
+      {
+        "label": "28",
+        "value": "28"
+      },
+      {
+        "label": "29",
+        "value": "29"
+      },
+      {
+        "label": "30",
+        "value": "30"
+      },
+      {
+        "label": "31",
+        "value": "31"
+      }
+    ]
+  },
+  "collectorList": [
+    {
+      "label": "700",
+      "value": "700"
+    },
+    {
+      "label": "701",
+      "value": "701"
+    },
+    {
+      "label": "702",
+      "value": "702"
+    },
+    {
+      "label": "703",
+      "value": "703"
+    },
+    {
+      "label": "704",
+      "value": "704"
+    },
+    {
+      "label": "705",
+      "value": "705"
+    },
+    {
+      "label": "706",
+      "value": "706"
+    },
+    {
+      "label": "707",
+      "value": "707"
+    },
+    {
+      "label": "708",
+      "value": "708"
+    },
+    {
+      "label": "709",
+      "value": "709"
+    },
+    {
+      "label": "710",
+      "value": "710"
+    },
+    {
+      "label": "711",
+      "value": "711"
+    },
+    {
+      "label": "712",
+      "value": "712"
+    },
+    {
+      "label": "713",
+      "value": "713"
+    },
+    {
+      "label": "714",
+      "value": "714"
+    },
+    {
+      "label": "715",
+      "value": "715"
+    },
+    {
+      "label": "716",
+      "value": "716"
+    },
+    {
+      "label": "717",
+      "value": "717"
+    },
+    {
+      "label": "718",
+      "value": "718"
+    },
+    {
+      "label": "719",
+      "value": "719"
+    },
+    {
+      "label": "720",
+      "value": "720"
+    },
+    {
+      "label": "721",
+      "value": "721"
+    },
+    {
+      "label": "722",
+      "value": "722"
+    },
+    {
+      "label": "723",
+      "value": "723"
+    },
+    {
+      "label": "724",
+      "value": "724"
+    },
+    {
+      "label": "725",
+      "value": "725"
+    },
+    {
+      "label": "726",
+      "value": "726"
+    },
+    {
+      "label": "727",
+      "value": "727"
+    },
+    {
+      "label": "728",
+      "value": "728"
+    },
+    {
+      "label": "729",
+      "value": "729"
+    },
+    {
+      "label": "730",
+      "value": "730"
+    },
+    {
+      "label": "731",
+      "value": "731"
+    },
+    {
+      "label": "732",
+      "value": "732"
+    },
+    {
+      "label": "733",
+      "value": "733"
+    },
+    {
+      "label": "734",
+      "value": "734"
+    },
+    {
+      "label": "735",
+      "value": "735"
+    },
+    {
+      "label": "736",
+      "value": "736"
+    },
+    {
+      "label": "737",
+      "value": "737"
+    },
+    {
+      "label": "738",
+      "value": "738"
+    },
+    {
+      "label": "739",
+      "value": "739"
+    },
+    {
+      "label": "740",
+      "value": "740"
+    },
+    {
+      "label": "741",
+      "value": "741"
+    },
+    {
+      "label": "742",
+      "value": "742"
+    },
+    {
+      "label": "743",
+      "value": "743"
+    },
+    {
+      "label": "744",
+      "value": "744"
+    },
+    {
+      "label": "745",
+      "value": "745"
+    },
+    {
+      "label": "746",
+      "value": "746"
+    },
+    {
+      "label": "747",
+      "value": "747"
+    },
+    {
+      "label": "748",
+      "value": "748"
+    },
+    {
+      "label": "749",
+      "value": "749"
+    },
+    {
+      "label": "750",
+      "value": "750"
+    }
+  ],
+  "collectorQuestions": [
+    {
+      "text": "TURNO",
+      "gravity": "BAIXO",
+      "options": [
+        "1º",
+        "2º"
+      ]
+    },
+    {
+      "text": "VIDRO",
+      "gravity": "MÉDIO",
+      "options": [
+        "REGULAR",
+        "TRINCADO",
+        "QUEBRADO",
+        "FALTANDO"
+      ]
+    },
+    {
+      "text": "CARCAÇA",
+      "gravity": "BAIXO",
+      "options": [
+        "REGULAR",
+        "TRINCADA",
+        "QUEBRADA"
+      ]
+    },
+    {
+      "text": "CAPA",
+      "gravity": "BAIXO",
+      "options": [
+        "REGULAR",
+        "FALTANDO",
+        "DANIFICADA"
+      ]
+    },
+    {
+      "text": "GATILHO",
+      "gravity": "CRÍTICO",
+      "options": [
+        "REGULAR",
+        "QUEBRADO",
+        "TRAVADO"
+      ]
+    },
+    {
+      "text": "LEITOR",
+      "gravity": "CRÍTICO",
+      "options": [
+        "REGULAR",
+        "INOPERANTE"
+      ]
+    },
+    {
+      "text": "INTERFACE",
+      "gravity": "MÉDIO",
+      "options": [
+        "REGULAR",
+        "FALTA DE TOUCH",
+        "BOTÃO QUEBRADO"
+      ]
+    },
+    {
+      "text": "SISTEMA",
+      "gravity": "CRÍTICO",
+      "options": [
+        "REGULAR",
+        "INOPERANTE"
+      ]
+    },
+    {
+      "text": "CONEXÃO",
+      "gravity": "CRÍTICO",
+      "options": [
+        "REGULAR",
+        "FALHA",
+        "INOPERANTE"
+      ]
+    },
+    {
+      "text": "AÇÃO",
+      "gravity": "CRÍTICO",
+      "options": [
+        "ENVIAR PARA MANUTENÇÃO",
+        "SUBSTITUIR",
+        "PRONTO PARA USO"
+      ]
+    }
+  ],
+  "data5S": {
+    "sectors": {
+      "DEPOSITO": [
+        {
+          "name": "Prevenção e perda",
+          "tag": "PREVENCAO"
+        },
+        {
+          "name": "Docas",
+          "tag": "DOCAS"
+        },
+        {
+          "name": "Devolução",
+          "tag": "DEVOLUCAO"
+        },
+        {
+          "name": "Maquina de Tinta",
+          "tag": "TINTA"
+        },
+        {
+          "name": "Ruas",
+          "tag": "RUAS"
+        }
+      ],
+      "OFFICE": [
+        {
+          "name": "Transportes",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "RH",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Diretoria",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "CFTV",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Melhoria Continua",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Sala de Reuniões",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Financeiro",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Tele Vendas",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Logistica",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Gerencia",
+          "tag": "OFFICE"
+        },
+        {
+          "name": "Refeitório Logistica",
+          "tag": "OFFICE"
+        }
+      ],
+      "PÁTIO": [
+        {
+          "name": "FOGUEIRAS",
+          "tag": "fogueiras"
+        },
+        {
+          "name": "TENDA",
+          "tag": "tenda"
+        },
+        {
+          "name": "TUBOS",
+          "tag": "tubos"
+        },
+        {
+          "name": "LATERAL RECICLAGEM",
+          "tag": "lateral_reciclagem"
+        },
+        {
+          "name": "FUNDO DEPÓSITO",
+          "tag": "fundo_deposito"
+        },
+        {
+          "name": "LATERAL ESTACIONAMENTO",
+          "tag": "lateral_estacionamento"
+        },
+        {
+          "name": "CAIXAS DAGUA",
+          "tag": "caixas_dagua"
+        }
+      ]
+    },
+    "questions": {
+      "PREVENCAO": [
+        "Na mesa só existe material necessário para executar as atividades?",
+        "Devolução e/ou avaria está identificada?",
+        "Área do P&P, avaria e descarte estão organizados?",
+        "Ferramenta e material de limpeza estão no local correto?",
+        "Devolução e/ou avaria está armazenada no local correto?",
+        "Não existe material desnecessário a atividade administrativa?",
+        "Não existe material desnecessário a atividade do depósito?",
+        "Só existe pallet necessário na operação?",
+        "Na operação existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todos utilizam o uniforme completo e em bom estado?",
+        "Todo o material está armazenado no local adequado?",
+        "Existe lâmpada acessa desnecessariamente?"
+      ],
+      "DOCAS": [
+        "Paleteira não utilizada está estacionada no local indicado?",
+        "As caixas de separação, embalagem, coletor, tarugos e fitas estão no local correto?",
+        "Área destinada a clientes retira está limpa e organizada?",
+        "No checkout só existe material necessário para executar as atividades?",
+        "Ferramenta e material de limpeza estão no local correto?",
+        "Não existe material desnecessário a atividade da doca?",
+        "Só existe pallet necessário na doca?",
+        "Na doca existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?"
+      ],
+      "DEVOLUCAO": [
+        "Devolução e/ou avaria está identificada?",
+        "Área do P&P, avaria e descarte estão organizados?",
+        "Devolução e/ou avaria está armazenada no local correto?",
+        "Não existe material desnecessário a atividade administrativa?",
+        "Não existe material desnecessário a atividade do depósito?",
+        "Só existe pallet necessário na operação?",
+        "Na operação existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todos utilizam o uniforme completo e em bom estado?",
+        "Todo o material está armazenado no local adequado?",
+        "Existe lâmpada acessa desnecessariamente?"
+      ],
+      "TINTA": [
+        "Área do P&P, avaria e descarte estão organizados?",
+        "Não existe material desnecessário a atividade administrativa?",
+        "Não existe material desnecessário a atividade do depósito?",
+        "Só existe pallet necessário na operação?",
+        "Na operação existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todos utilizam o uniforme completo e em bom estado?",
+        "Todo o material está armazenado no local adequado?",
+        "Existe lâmpada acessa desnecessariamente?"
+      ],
+      "OFFICE": [
+        "Os aparelhos ligados estão sendo desligados?",
+        "Só existe material necessário nos armários?",
+        "Na sala não existe objetos pessoais fora do local indicado?",
+        "Os materiais-objetos-equipamentos estão em locais adequados e com as etiquetas de identificação?",
+        "Os arquivos estão armazenados de acordo com a etiqueta indicada?",
+        "O telefone fixo encontra-se no local destinado a ele quando não está em uso?",
+        "De modo geral o setor encontra-se organizado?",
+        "As mesas e armários estão limpos?",
+        "Computadores, teclados e mouses estão em boas condições de limpeza?",
+        "De maneira geral, o setor está limpo e sem sujidade?",
+        "As lixeiras do setor não se encontram cheias a ponto de transbordar?",
+        "Só existe lâmpada necessária acesa?",
+        "O controle do ar condicionado utilizado é do setor?",
+        "Os computadores estão sendo bloqueados quando o colaborador se ausenta da sala?",
+        "Todas as canecas de café encontram-se identificadas com o nome do colaborador?",
+        "Todas as portas de armários e gavetas estão fechadas?",
+        "Os arquivos do computador estão organizados e armazenados em pastas nomeadas?",
+        "O setor manteve a disciplina no momento em que estava sendo auditado?",
+        "Todos estão utilizando o crachá e o uniforme completo?",
+        "Na mesa só existe material necessário para executar as atividades?"
+      ],
+      "RUA 1": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 2": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 3": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 4": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 5": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 6": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 7": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 8": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 9": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 10": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 11": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 12": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 13": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 14": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 15": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 16": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 17": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "RUA 18": [
+        "Existem produtos soltos/avulso que não foram alocados no picking?",
+        "Os filmes das latas estão sendo retirados?",
+        "Há materiais ou pallets no corredor que não deveriam estar aqui?",
+        "Os itens estão armazenados em posições adequadas?",
+        "Os pickings estão identificados de forma visível e padronizada?",
+        "Há pallets fora do alinhamento ou invadindo a faixa de circulação?",
+        "Existem embalagens rasgadas ou avarias visíveis nas prateleiras?",
+        "A iluminação da rua está adequada para operação segura?",
+        "Há produtos avariados, amassados ou com vazamento armazenados?",
+        "Os baldes/latas estão posicionados sem ultrapassar a faixa amarela?",
+        "Existem latas com tampa suja que podem causar contaminação?",
+        "O corredor está livre de resíduos que possam causar escorregões?",
+        "As embalagens dos galões de 3,6L estão sendo retiradas?",
+        "As portas de emergência estão desobstruídas?",
+        "Não existe material desnecessário a atividade da rua?",
+        "Só existe pallet necessário na rua?",
+        "Na rua existe objetos pessoais?",
+        "Sistema de Incêndio, hidrante, sinalização, etc, está correto e acessível?",
+        "Todo o material está armazenado no local adequado?",
+        "As etiquetas estão em bom estado de indentifação?"
+      ],
+      "fogueiras": [
+        "Os tubos estão organizados e empilhados de forma que evite avarias?",
+        "Existem itens diferentes misturados na mesma fogueira?",
+        "A área das fogueiras está limpa e organizada?"
+      ],
+      "tenda": [
+        "A área está limpa e organizada?",
+        "As tintas com prazo de vencimento mais curto estão na frente?",
+        "Os arames estão empilhados e organizados de forma segura?",
+        "Alguma avaria identificada?"
+      ],
+      "tubos": [
+        "Todos os tubos estão em seus respectivos pickings?",
+        "Existem tubos no chão (local inapropriado)?",
+        "A gaiola destinada a avarias está sendo utilizada corretamente?",
+        "A escada operacional está em boas condições de uso?"
+      ],
+      "lateral_reciclagem": [
+        "A caçamba de entulho está em local apropriado e de forma que não atrapalhe o trânsito de empilhadeira a gás?",
+        "Os forros estão armazenados de forma correta?",
+        "Os forros avariados estão identificados e organizados?",
+        "Os paletes descartáveis estão organizados e fora da área de trânsito de empilhadeira a gás?",
+        "A área de recicláveis está organizada?",
+        "As portas de emergência estão desobstruídas?",
+        "A área de avarias está limpa e organizada e com a área de trânsito de empilhadeira desobstruída?",
+        "Os paletes da Basf estão organizados e empilhados de forma segura?"
+      ],
+      "fundo_deposito": [
+        "As portas de emergência estão desobstruídas?",
+        "Existe material em local inapropriado?",
+        "A gaiola de gás está em local apropriado e com extintor de incêndio disponível?",
+        "Existem poças de água que possam facilitar a proliferação de insetos?",
+        "A área está limpa e organizada?"
+      ],
+      "lateral_estacionamento": [
+        "A área está limpa e organizada?"
+      ],
+      "caixas_dagua": [
+        "Existem objetos desnecessários próximos ou sobre a caixa d’água?",
+        "Materiais armazenados ao redor interferem no acesso à caixa d’água?",
+        "Há acúmulo de itens sem uso na área da caixa d’água?",
+        "A área da caixa d’água está sinalizada e de fácil acesso?",
+        "Os registros e válvulas estão identificados corretamente?",
+        "Existe espaço livre adequado ao redor da caixa d’água para manutenção?",
+        "Escadas ou meios de acesso estão organizados e seguros?",
+        "A caixa d’água apresenta sujeira visível externamente?",
+        "Há sinais de vazamento ou umidade ao redor da caixa d’água?",
+        "A tampa da caixa d’água está limpa e bem vedada?",
+        "Existe presença de insetos, lodo ou sinais de contaminação?",
+        "A área ao redor da caixa d’água está limpa (sem poeira excessiva ou resíduos)?",
+        "Existe cronograma de limpeza periódica da caixa d’água?",
+        "A última limpeza da caixa d’água está registrada e dentro do prazo?",
+        "A caixa d’água possui identificação de capacidade e uso?",
+        "Os procedimentos de higienização estão documentados?",
+        "A equipe segue corretamente os procedimentos de limpeza?",
+        "As inspeções estão sendo realizadas regularmente?",
+        "Há responsáveis definidos pela manutenção da caixa d’água?",
+        "As não conformidades anteriores foram corrigidas?"
+      ]
+    }
+  },
+  "completedThisShift": {
+    "general": [
+      "Empilhadeira a Combustão|04",
+      "Empilhadeira Elétrica|02",
+      "Empilhadeira Elétrica|01"
+    ],
+    "collectors": [],
+    "s5": []
+  },
+  "status": "success"
+}

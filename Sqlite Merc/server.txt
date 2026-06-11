@@ -1,0 +1,5 @@
+pm2 start server.js --name "API_Mercante"
+
+pm2 restart API_Mercante
+
+" dist " = npx expo export

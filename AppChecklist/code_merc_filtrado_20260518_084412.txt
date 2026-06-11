@@ -1,0 +1,4087 @@
+CODE MERC - CÓDIGO FONTE (FILTRADO)
+Origem: C:\Users\nicolas.sampaio\Desktop\AppChecklist\code merc\myapp
+Filtro: Pasta 'src' completa + arquivos (App.js, app.json, package.json)
+Total: 14 arquivos
+Data: 2026-05-18 08:44:12.701746
+======================================================================
+
+
+======================================================================
+ARQUIVO 1: package.json
+======================================================================
+
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/ngrok": "^4.1.0",
+    "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-picker/picker": "2.11.1",
+    "@react-navigation/bottom-tabs": "^7.6.0",
+    "@react-navigation/native": "^7.1.19",
+    "@react-navigation/native-stack": "^7.6.0",
+    "@react-navigation/stack": "^7.6.12",
+    "expo": "~54.0.20",
+    "expo-image-manipulator": "~14.0.8",
+    "expo-image-picker": "~17.0.10",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "^2.29.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "^0.21.0"
+  },
+  "private": true
+}
+
+
+======================================================================
+ARQUIVO 2: app.json
+======================================================================
+
+{
+  "expo": {
+    "name": "Mercante Checklist",
+    "slug": "mercante-checklist",
+    "version": "1.1.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.mercante.checklist",
+      "versionCode": 12,
+      "statusBar": {
+        "barStyle": "dark-content",
+        "backgroundColor": "transparent",
+        "translucent": true
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-font"],
+    "extra": {
+      "eas": {
+        "projectId": "263eaa27-fd5a-4f66-8c95-a77ebbf8e677"
+      }
+    }
+  }
+}
+
+
+======================================================================
+ARQUIVO 3: App.js
+======================================================================
+
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+// Import das Telas
+import LoginScreen from "./src/screens/LoginScreen";
+import MenuScreen from "./src/screens/MenuScreen";
+import ChecklistScreen from "./src/screens/ChecklistScreen";
+import CollectorChecklistScreen from "./src/screens/CollectorChecklistScreen";
+import ReportsListScreen from "./src/screens/ReportsListScreen";
+import ReportDetailScreen from "./src/screens/ReportDetailScreen";
+
+// --- NOVAS TELAS DO 5S ---
+import FiveSMenuScreen from "./src/screens/FiveSMenuScreen";
+import Checklist5SScreen from "./src/screens/Checklist5SScreen";
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Menu" component={MenuScreen} />
+
+          {/* Telas Padrão */}
+          <Stack.Screen name="Checklist" component={ChecklistScreen} />
+          <Stack.Screen
+            name="CollectorChecklist"
+            component={CollectorChecklistScreen}
+          />
+
+          {/* Telas Administrativas */}
+          <Stack.Screen name="ReportsList" component={ReportsListScreen} />
+          <Stack.Screen name="ReportDetail" component={ReportDetailScreen} />
+
+          {/* --- ROTAS DO 5S (ADICIONADAS AGORA) --- */}
+          <Stack.Screen name="FiveSMenu" component={FiveSMenuScreen} />
+          <Stack.Screen name="Checklist5S" component={Checklist5SScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+
+      <StatusBar style="light" backgroundColor="#005A9C" translucent={false} />
+    </SafeAreaProvider>
+  );
+}
+
+
+======================================================================
+ARQUIVO 4: src\colors\theme.js
+======================================================================
+
+// Local: src/theme.js
+
+// Esta é nossa paleta de cores central.
+// Usaremos nomes em vez de códigos de cor nos nossos componentes.
+export const COLORS = {
+  // Cores da Marca
+  primary: "#005A9C", // Um azul mais escuro, corporativo
+  secondary: "#34A853", // O verde que já usamos
+  danger: "#EA4335", // O vermelho que já usamos
+
+  // Cores Neutras
+  background: "#F0F2F5", // Um cinza bem claro para o fundo do app
+  white: "#FFFFFF",
+  black: "#000000",
+
+  // Cores de Texto
+  textPrimary: "#333333", // Para títulos
+  textSecondary: "#666666", // Para subtextos, infos
+
+  // Outras
+  lightGray: "#EAEAEA",
+  disabled: "#A9A9A9",
+};
+
+// Podemos definir tamanhos de fonte padrão também
+export const SIZES = {
+  base: 8,
+  font: 14,
+  radius: 12,
+  padding: 20,
+
+  // Tamanhos de fonte
+  h1: 28,
+  h2: 24,
+  h3: 18,
+  body: 14,
+};
+
+
+======================================================================
+ARQUIVO 5: src\components\ChecklistItem.js
+======================================================================
+
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons } from "@expo/vector-icons";
+
+// Mapa de cores baseado na gravidade (ignora maiúsculas/minúsculas)
+const getGravityColor = (gravity) => {
+  if (!gravity) return "transparent";
+  const g = gravity.toLowerCase();
+  if (g.includes("crítico") || g.includes("critico") || g.includes("alto"))
+    return "#FFCDD2"; // Vermelho claro
+  if (g.includes("médio") || g.includes("medio")) return "#FFE0B2"; // Laranja claro
+  if (g.includes("baixo")) return "#E1F5FE"; // Azul claro
+  return "#F5F5F5"; // Cinza padrão
+};
+
+const getGravityTextColor = (gravity) => {
+  if (!gravity) return COLORS.textSecondary;
+  const g = gravity.toLowerCase();
+  if (g.includes("crítico") || g.includes("critico") || g.includes("alto"))
+    return COLORS.danger;
+  if (g.includes("médio") || g.includes("medio")) return "#F57C00";
+  if (g.includes("baixo")) return "#0288D1";
+  return COLORS.textSecondary;
+};
+
+export default function ChecklistItem({
+  itemText,
+  onSelect,
+  selectedOption,
+  gravity,
+}) {
+  return (
+    <View style={styles.card}>
+      <View style={styles.headerRow}>
+        <Text style={styles.itemText}>{itemText}</Text>
+        {gravity ? (
+          <View
+            style={[
+              styles.gravityBadge,
+              { backgroundColor: getGravityColor(gravity) },
+            ]}
+          >
+            <Text
+              style={[
+                styles.gravityText,
+                { color: getGravityTextColor(gravity) },
+              ]}
+            >
+              {gravity.toUpperCase()}
+            </Text>
+          </View>
+        ) : null}
+      </View>
+
+      <View style={styles.optionsContainer}>
+        <TouchableOpacity
+          style={[
+            styles.optionButton,
+            selectedOption === "OK" && styles.optionOk,
+          ]}
+          onPress={() => onSelect(itemText, "OK")}
+        >
+          <Text
+            style={[
+              styles.optionText,
+              selectedOption === "OK" && styles.optionTextSelected,
+            ]}
+          >
+            OK
+          </Text>
+          {selectedOption === "OK" && (
+            <Ionicons
+              name="checkmark-circle"
+              size={18}
+              color={COLORS.white}
+              style={{ marginLeft: 5 }}
+            />
+          )}
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.optionButton,
+            selectedOption === "NÃO OK" && styles.optionNok,
+          ]}
+          onPress={() => onSelect(itemText, "NÃO OK")}
+        >
+          <Text
+            style={[
+              styles.optionText,
+              selectedOption === "NÃO OK" && styles.optionTextSelected,
+            ]}
+          >
+            NÃO OK
+          </Text>
+          {selectedOption === "NÃO OK" && (
+            <Ionicons
+              name="alert-circle"
+              size={18}
+              color={COLORS.white}
+              style={{ marginLeft: 5 }}
+            />
+          )}
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: COLORS.white,
+    padding: 15,
+    marginVertical: 5,
+    marginHorizontal: SIZES.padding / 2,
+    borderRadius: SIZES.radius,
+    elevation: 2,
+  },
+  headerRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 10,
+  },
+  itemText: {
+    fontSize: 16,
+    color: COLORS.textPrimary,
+    fontWeight: "500",
+    flex: 1, // Permite que o texto quebre linha e não empurre a badge
+    marginRight: 10,
+  },
+  gravityBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  gravityText: {
+    fontSize: 10,
+    fontWeight: "bold",
+  },
+  optionsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  optionButton: {
+    flex: 1,
+    paddingVertical: 10,
+    marginHorizontal: 5,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  optionOk: {
+    backgroundColor: COLORS.secondary,
+    borderColor: COLORS.secondary,
+  },
+  optionNok: {
+    backgroundColor: COLORS.danger,
+    borderColor: COLORS.danger,
+  },
+  optionText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: COLORS.textSecondary,
+  },
+  optionTextSelected: {
+    color: COLORS.white,
+  },
+});
+
+
+======================================================================
+ARQUIVO 6: src\screens\Checklist5SScreen.js
+======================================================================
+
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  Text,
+  Modal,
+  TouchableOpacity,
+  Alert,
+  StatusBar,
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import ChecklistItem from "../components/ChecklistItem";
+import { sendReport } from "../services/api";
+import * as ImagePicker from "expo-image-picker";
+import * as ImageManipulator from "expo-image-manipulator";
+
+const KeyboardWrapper = ({ children }) => {
+  if (Platform.OS === "web") {
+    return <View style={{ flex: 1, overflow: "hidden" }}>{children}</View>;
+  }
+  return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      {children}
+    </KeyboardAvoidingView>
+  );
+};
+
+export default function Checklist5SScreen({ route, navigation }) {
+  const { title, userName, date, time, items, areaType, sectorDetail } =
+    route.params;
+  const [responses, setResponses] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [photos, setPhotos] = useState([]);
+  const [observacao, setObservacao] = useState("");
+
+  const totalItems = items.length;
+  const answeredItems = Object.keys(responses).length;
+  const isComplete = totalItems === answeredItems;
+
+  const handleSelectOption = (itemText, option) => {
+    setResponses((prev) => ({ ...prev, [itemText]: option }));
+  };
+
+  const handleTakePhoto = async () => {
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissionResult.granted === false) {
+      Alert.alert("Permissão necessária", "Acesso à câmera é necessário.");
+      return;
+    }
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: false,
+      quality: 0.5,
+    });
+    if (!result.canceled) {
+      const manipResult = await ImageManipulator.manipulateAsync(
+        result.assets[0].uri,
+        [{ resize: { width: 800 } }],
+        {
+          compress: 0.5,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true,
+        },
+      );
+      setPhotos([...photos, manipResult]);
+    }
+  };
+
+  const handleRemovePhoto = (indexToRemove) => {
+    setPhotos(photos.filter((_, index) => index !== indexToRemove));
+  };
+
+  const handleOpenReport = () => {
+    setModalVisible(true);
+  };
+
+  const handleSaveAndExit = async () => {
+    setSending(true);
+    try {
+      const timestamp = new Date().toISOString();
+      const uniqueId = `ID-5S-${Date.now()}`;
+      const finalResponses = { ...responses, OBSERVAÇÃO: observacao || "" };
+      const photosBase64 = photos.map((p) => p.base64);
+      const reportData = {
+        id: uniqueId,
+        timestamp,
+        equipmentTitle: title,
+        userName,
+        date,
+        time,
+        areaType,
+        sectorDetail,
+        responses: finalResponses,
+        photosBase64,
+      };
+      await sendReport(reportData);
+
+      const localReport = {
+        ...reportData,
+        photosBase64: [],
+        hasPhotos: photos.length > 0,
+      };
+      await AsyncStorage.setItem(
+        `@report_${timestamp}`,
+        JSON.stringify(localReport),
+      );
+      setModalVisible(false);
+      setSuccessModalVisible(true);
+    } catch (e) {
+      console.error(e);
+      Alert.alert("Erro", "Falha na conexão. Tente novamente.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const handleBackToMenu = () => {
+    setSuccessModalVisible(false);
+    navigation.popToTop();
+  };
+
+  const handleBackToCategory = () => {
+    setSuccessModalVisible(false);
+    navigation.goBack();
+  };
+
+  const renderFooter = () => (
+    <View style={{ paddingBottom: 100, paddingHorizontal: SIZES.padding }}>
+      <View style={styles.questionCard}>
+        <Text style={styles.questionTitle}>OBSERVAÇÃO</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Alguma anotação sobre o 5S? (Opcional)"
+          placeholderTextColor={COLORS.disabled}
+          value={observacao}
+          onChangeText={setObservacao}
+          multiline={true}
+          numberOfLines={3}
+        />
+      </View>
+
+      <View style={styles.photoContainer}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 10,
+          }}
+        >
+          <Text style={{ fontWeight: "bold", color: COLORS.textPrimary }}>
+            Evidências ({photos.length})
+          </Text>
+          <TouchableOpacity
+            style={styles.addPhotoButton}
+            onPress={handleTakePhoto}
+          >
+            <Ionicons name="camera" size={20} color={COLORS.white} />
+            <Text
+              style={{ color: COLORS.white, marginLeft: 5, fontWeight: "bold" }}
+            >
+              Add Foto
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {photos.length > 0 ? (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ marginTop: 5 }}
+          >
+            {photos.map((p, index) => (
+              <View key={index} style={styles.photoThumbContainer}>
+                <Image source={{ uri: p.uri }} style={styles.photoThumb} />
+                <TouchableOpacity
+                  style={styles.removeIcon}
+                  onPress={() => handleRemovePhoto(index)}
+                >
+                  <Ionicons name="trash" size={16} color={COLORS.white} />
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
+        ) : (
+          <Text
+            style={{
+              color: COLORS.disabled,
+              fontStyle: "italic",
+              fontSize: 12,
+            }}
+          >
+            Nenhuma foto anexada.
+          </Text>
+        )}
+      </View>
+
+      <Text style={styles.progressText}>
+        {answeredItems} / {totalItems} itens marcados
+      </Text>
+
+      <TouchableOpacity
+        style={[
+          styles.actionButton,
+          { backgroundColor: COLORS.primary },
+          !isComplete && styles.actionButtonDisabled,
+        ]}
+        onPress={handleOpenReport}
+        disabled={!isComplete}
+      >
+        <Text style={styles.actionButtonText}>FINALIZAR 5S</Text>
+        <Ionicons
+          name="checkmark-done"
+          size={20}
+          color={COLORS.white}
+          style={{ marginLeft: 10 }}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+
+  return (
+    <SafeAreaView
+      style={styles.screenContainer}
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.headerTitle}>Auditoria 5S</Text>
+          <Text style={styles.headerSubtitle}>
+            {areaType} - {sectorDetail}
+          </Text>
+        </View>
+      </View>
+
+      <KeyboardWrapper>
+        <FlatList
+          data={items}
+          renderItem={({ item }) => (
+            <ChecklistItem
+              itemText={item}
+              onSelect={handleSelectOption}
+              selectedOption={responses[item]}
+            />
+          )}
+          keyExtractor={(item) => item}
+          contentContainerStyle={styles.listContainer}
+          style={[{ flex: 1 }, Platform.OS === "web" && { overflow: "auto" }]}
+          ListFooterComponent={renderFooter()}
+        />
+      </KeyboardWrapper>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Ionicons
+              name="document-text-outline"
+              size={40}
+              color={COLORS.primary}
+              style={{ alignSelf: "center" }}
+            />
+            <Text style={styles.modalTitle}>Resumo Final</Text>
+            <Text
+              style={{
+                textAlign: "center",
+                marginBottom: 10,
+                color: COLORS.textSecondary,
+              }}
+            >
+              Local:{" "}
+              <Text style={{ fontWeight: "bold", color: COLORS.textPrimary }}>
+                {sectorDetail}
+              </Text>
+            </Text>
+
+            {photos.length > 0 && (
+              <Text
+                style={{
+                  textAlign: "center",
+                  marginBottom: 10,
+                  color: COLORS.secondary,
+                  fontWeight: "bold",
+                }}
+              >
+                <Ionicons name="images" /> {photos.length} foto(s) em anexo
+              </Text>
+            )}
+
+            <ScrollView style={styles.modalScroll}>
+              {Object.entries(responses).map(([item, status]) => (
+                <View key={item} style={styles.reportItem}>
+                  <Text style={styles.reportItemText}>{item}:</Text>
+                  <Text
+                    style={[
+                      styles.reportStatusText,
+                      status === "OK" ? styles.statusOk : styles.statusNok,
+                    ]}
+                  >
+                    {status}
+                  </Text>
+                </View>
+              ))}
+            </ScrollView>
+
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.secondary, marginTop: 10 },
+              ]}
+              onPress={handleSaveAndExit}
+              disabled={sending}
+            >
+              {sending ? (
+                <ActivityIndicator color="#FFF" />
+              ) : (
+                <Text style={styles.actionButtonText}>ENVIAR</Text>
+              )}
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { marginTop: 10, backgroundColor: COLORS.disabled },
+              ]}
+              onPress={() => setModalVisible(false)}
+              disabled={sending}
+            >
+              <Text style={styles.actionButtonText}>CANCELAR</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={successModalVisible}
+        onRequestClose={() => {}}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.successCard}>
+            <View style={styles.iconCircle}>
+              <Ionicons name="checkmark" size={40} color={COLORS.white} />
+            </View>
+            <Text style={styles.successTitle}>Sucesso!</Text>
+            <TouchableOpacity
+              style={styles.successBtnPrimary}
+              onPress={handleBackToCategory}
+            >
+              <Text style={styles.successBtnTextPrimary}>
+                Voltar para {areaType}
+              </Text>
+              <MaterialCommunityIcons
+                name="arrow-u-left-top"
+                size={20}
+                color={COLORS.white}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    ...(Platform.OS === "web"
+      ? { maxHeight: "100vh", overflow: "hidden" }
+      : {}),
+  },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  backButton: { marginRight: SIZES.padding },
+  headerTitle: { fontSize: SIZES.h2, fontWeight: "bold", color: COLORS.white },
+  headerSubtitle: { fontSize: SIZES.h3, color: COLORS.white, opacity: 0.8 },
+  listContainer: { paddingTop: SIZES.base },
+  actionButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  actionButtonText: { color: COLORS.white, fontWeight: "bold", fontSize: 16 },
+  actionButtonDisabled: { backgroundColor: COLORS.disabled },
+  progressText: {
+    textAlign: "center",
+    marginBottom: 10,
+    fontSize: 14,
+    color: COLORS.textSecondary,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  modalContent: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderTopLeftRadius: SIZES.radius * 2,
+    borderTopRightRadius: SIZES.radius * 2,
+    padding: SIZES.padding,
+    paddingBottom: SIZES.padding * 2,
+  },
+  modalTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  successCard: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderRadius: 20,
+    padding: 25,
+    alignItems: "center",
+    elevation: 5,
+  },
+  iconCircle: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: COLORS.secondary,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  successTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  successBtnPrimary: {
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    elevation: 2,
+  },
+  successBtnTextPrimary: {
+    color: COLORS.white,
+    fontWeight: "bold",
+    fontSize: 16,
+    marginRight: 8,
+  },
+  questionCard: {
+    backgroundColor: COLORS.white,
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: SIZES.radius,
+    elevation: 1,
+  },
+  questionTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  textInput: {
+    backgroundColor: COLORS.background,
+    borderRadius: SIZES.radius,
+    borderColor: COLORS.lightGray,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 14,
+    color: COLORS.textPrimary,
+    textAlignVertical: "top",
+    minHeight: 80,
+  },
+  photoContainer: { marginBottom: 20 },
+  addPhotoButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.secondary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  photoThumbContainer: { marginRight: 10, position: "relative" },
+  photoThumb: {
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+  },
+  removeIcon: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: COLORS.danger,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  modalScroll: { maxHeight: 200, marginBottom: SIZES.padding },
+  reportItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+  },
+  reportItemText: { fontSize: 14, color: COLORS.textPrimary, flex: 1 },
+  reportStatusText: { fontSize: 14, fontWeight: "bold", marginLeft: 10 },
+  statusOk: { color: COLORS.secondary },
+  statusNok: { color: COLORS.danger },
+});
+
+
+======================================================================
+ARQUIVO 7: src\screens\ChecklistScreen.js
+======================================================================
+
+import React, { useState, useCallback } from "react";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  Text,
+  Modal,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  StatusBar,
+  ActivityIndicator,
+  Image,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Picker } from "@react-native-picker/picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import ChecklistItem from "../components/ChecklistItem";
+import { sendReport } from "../services/api";
+import * as ImagePicker from "expo-image-picker";
+import * as ImageManipulator from "expo-image-manipulator";
+
+// COMPONENTE INTELIGENTE: Remove o KeyboardAvoidingView na Web para habilitar o scroll do mouse
+const KeyboardWrapper = ({ children }) => {
+  if (Platform.OS === "web") {
+    return <View style={{ flex: 1, overflow: "hidden" }}>{children}</View>;
+  }
+  return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      {children}
+    </KeyboardAvoidingView>
+  );
+};
+
+export default function ChecklistScreen({ route, navigation }) {
+  const { title, userName, date, time, items, equipmentList, apiData } =
+    route.params;
+  const [step, setStep] = useState(equipmentList ? 1 : 2);
+  const [selectedEquipment, setSelectedEquipment] = useState(null);
+  const [responses, setResponses] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [photos, setPhotos] = useState([]);
+  const [observacao, setObservacao] = useState("");
+
+  const [completedInShift, setCompletedInShift] = useState([]);
+  const totalItems = items.length;
+  const answeredItems = Object.keys(responses).length;
+  const isComplete = totalItems === answeredItems;
+
+  const getShiftKeyFromAppFormat = (dateStr, timeStr) => {
+    if (!dateStr || !timeStr) return "";
+    const [day, month, year] = dateStr.split("/");
+    const [hour, minute] = timeStr.split(":");
+
+    const h = parseInt(hour, 10);
+    const m = parseInt(minute, 10);
+    let d = new Date(year, month - 1, day);
+
+    if (h < 8) d.setDate(d.getDate() - 1);
+
+    const pDay = String(d.getDate()).padStart(2, "0");
+    const pMonth = String(d.getMonth() + 1).padStart(2, "0");
+
+    const isNight = h > 18 || (h === 18 && m > 0) || h < 8;
+
+    return `${pDay}/${pMonth}/${d.getFullYear()}_${isNight ? "NOTURNO" : "DIURNO"}`;
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      const loadCompleted = async () => {
+        const serverCompleted = apiData?.completedThisShift?.general || [];
+        const currentShiftKey = getShiftKeyFromAppFormat(date, time);
+
+        const keys = await AsyncStorage.getAllKeys();
+        const reportKeys = keys.filter((k) => k.startsWith("@report_"));
+        const savedReports = await AsyncStorage.multiGet(reportKeys);
+
+        const localCompleted = [];
+        savedReports.forEach(([key, value]) => {
+          const report = JSON.parse(value);
+          if (report.specificId) {
+            if (
+              getShiftKeyFromAppFormat(report.date, report.time) ===
+              currentShiftKey
+            ) {
+              localCompleted.push(report.specificId);
+            }
+          }
+        });
+        setCompletedInShift([
+          ...new Set([...serverCompleted, ...localCompleted]),
+        ]);
+      };
+      loadCompleted();
+    }, [apiData]),
+  );
+
+  const handleStartChecklist = () => {
+    if (completedInShift.includes(selectedEquipment)) {
+      Alert.alert(
+        "Turno Concluído",
+        `O equipamento ${selectedEquipment} já foi inspecionado neste turno!`,
+      );
+      return;
+    }
+    setStep(2);
+  };
+
+  const handleSelectOption = (itemText, option) =>
+    setResponses((prev) => ({ ...prev, [itemText]: option }));
+
+  const handleTakePhoto = async () => {
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissionResult.granted === false) {
+      Alert.alert("Permissão necessária");
+      return;
+    }
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: false,
+      quality: 0.5,
+    });
+    if (!result.canceled) {
+      const manipResult = await ImageManipulator.manipulateAsync(
+        result.assets[0].uri,
+        [{ resize: { width: 800 } }],
+        {
+          compress: 0.5,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true,
+        },
+      );
+      setPhotos([...photos, manipResult]);
+    }
+  };
+
+  const handleRemovePhoto = (indexToRemove) =>
+    setPhotos(photos.filter((_, index) => index !== indexToRemove));
+
+  const handleOpenReport = () => setModalVisible(true);
+
+  const handleSaveAndExit = async () => {
+    setSending(true);
+    try {
+      const timestamp = new Date().toISOString();
+      const uniqueId = `ID-${Date.now()}`;
+      const finalResponses = { ...responses, OBSERVAÇÃO: observacao || "" };
+      const photosBase64 = photos.map((p) => p.base64);
+      const reportData = {
+        id: uniqueId,
+        timestamp,
+        equipmentTitle: title,
+        userName,
+        date,
+        time,
+        specificId: selectedEquipment,
+        responses: finalResponses,
+        photosBase64,
+      };
+      await sendReport(reportData);
+
+      const localReport = {
+        ...reportData,
+        photosBase64: [],
+        hasPhotos: photos.length > 0,
+      };
+      await AsyncStorage.setItem(
+        `@report_${timestamp}`,
+        JSON.stringify(localReport),
+      );
+      setModalVisible(false);
+      setSuccessModalVisible(true);
+    } catch (e) {
+      Alert.alert("Erro", "Falha na conexão.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const handleBackToMenu = () => {
+    setSuccessModalVisible(false);
+    navigation.popToTop();
+  };
+
+  const renderFooter = () => (
+    <View style={{ paddingBottom: 100, paddingHorizontal: SIZES.padding }}>
+      <View style={styles.questionCard}>
+        <Text style={styles.questionTitle}>OBSERVAÇÃO</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Alguma avaria ou comentário?"
+          placeholderTextColor={COLORS.disabled}
+          value={observacao}
+          onChangeText={setObservacao}
+          multiline={true}
+          numberOfLines={3}
+        />
+      </View>
+      <View style={styles.photoContainer}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 10,
+          }}
+        >
+          <Text style={{ fontWeight: "bold", color: COLORS.textPrimary }}>
+            Evidências ({photos.length})
+          </Text>
+          <TouchableOpacity
+            style={styles.addPhotoButton}
+            onPress={handleTakePhoto}
+          >
+            <Ionicons name="camera" size={20} color={COLORS.white} />
+            <Text
+              style={{ color: COLORS.white, marginLeft: 5, fontWeight: "bold" }}
+            >
+              Add Foto
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {photos.length > 0 ? (
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ marginTop: 5 }}
+          >
+            {photos.map((p, index) => (
+              <View key={index} style={styles.photoThumbContainer}>
+                <Image source={{ uri: p.uri }} style={styles.photoThumb} />
+                <TouchableOpacity
+                  style={styles.removeIcon}
+                  onPress={() => handleRemovePhoto(index)}
+                >
+                  <Ionicons name="trash" size={16} color={COLORS.white} />
+                </TouchableOpacity>
+              </View>
+            ))}
+          </ScrollView>
+        ) : (
+          <Text
+            style={{
+              color: COLORS.disabled,
+              fontStyle: "italic",
+              fontSize: 12,
+            }}
+          >
+            Nenhuma foto anexada.
+          </Text>
+        )}
+      </View>
+      <Text style={styles.progressText}>
+        {answeredItems} / {totalItems} itens marcados
+      </Text>
+      <TouchableOpacity
+        style={[
+          styles.actionButton,
+          { backgroundColor: COLORS.primary },
+          !isComplete && styles.actionButtonDisabled,
+        ]}
+        onPress={handleOpenReport}
+        disabled={!isComplete}
+      >
+        <Text style={styles.actionButtonText}>FINALIZAR</Text>
+        <Ionicons
+          name="checkmark-done"
+          size={20}
+          color={COLORS.white}
+          style={{ marginLeft: 10 }}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+
+  if (step === 1 && equipmentList) {
+    return (
+      <SafeAreaView
+        style={styles.screenContainer}
+        edges={["top", "bottom", "left", "right"]}
+      >
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent={true}
+        />
+        <View style={styles.headerContainer}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.headerTitle}>Identificação</Text>
+            <Text style={styles.headerSubtitle}>{title}</Text>
+          </View>
+        </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.pickerTitle}>QUAL EQUIPAMENTO?</Text>
+          <Text style={styles.pickerSubtitle}>Selecione o código.</Text>
+          <View style={styles.pickerWrapper}>
+            <Picker
+              selectedValue={selectedEquipment}
+              onValueChange={setSelectedEquipment}
+              style={styles.pickerElement}
+              dropdownIconColor={COLORS.primary}
+            >
+              <Picker.Item
+                label="Toque para selecionar..."
+                value={null}
+                color={COLORS.textSecondary}
+              />
+              {equipmentList.map((eq, index) => (
+                <Picker.Item
+                  key={index}
+                  label={eq.label}
+                  value={eq.value}
+                  color={COLORS.textPrimary}
+                />
+              ))}
+            </Picker>
+          </View>
+        </View>
+        <View style={{ padding: SIZES.padding }}>
+          <TouchableOpacity
+            style={[
+              styles.actionButton,
+              { backgroundColor: COLORS.primary },
+              !selectedEquipment && styles.actionButtonDisabled,
+            ]}
+            onPress={handleStartChecklist}
+            disabled={!selectedEquipment}
+          >
+            <Text style={styles.actionButtonText}>INICIAR</Text>
+            <MaterialCommunityIcons
+              name="arrow-right"
+              size={22}
+              color={COLORS.white}
+              style={{ marginLeft: 10 }}
+            />
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  return (
+    <SafeAreaView
+      style={styles.screenContainer}
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => {
+            if (equipmentList) setStep(1);
+            else navigation.goBack();
+          }}
+        >
+          <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.headerTitle}>Checklist</Text>
+          <Text style={styles.headerSubtitle}>
+            {title} {selectedEquipment ? `(${selectedEquipment})` : ""}
+          </Text>
+        </View>
+      </View>
+
+      <KeyboardWrapper>
+        <FlatList
+          data={items}
+          renderItem={({ item }) => (
+            <ChecklistItem
+              itemText={item.text || item}
+              gravity={item.gravity || null}
+              onSelect={handleSelectOption}
+              selectedOption={responses[item.text || item]}
+            />
+          )}
+          keyExtractor={(item, index) => (item.text ? item.text : item) + index}
+          contentContainerStyle={styles.listContainer}
+          style={[{ flex: 1 }, Platform.OS === "web" && { overflow: "auto" }]}
+          ListFooterComponent={renderFooter()}
+        />
+      </KeyboardWrapper>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Ionicons
+              name="document-text-outline"
+              size={40}
+              color={COLORS.primary}
+              style={{ alignSelf: "center" }}
+            />
+            <Text style={styles.modalTitle}>Resumo</Text>
+            {selectedEquipment && (
+              <Text style={{ textAlign: "center", marginBottom: 10 }}>
+                Eq: {selectedEquipment}
+              </Text>
+            )}
+            <ScrollView style={styles.modalScroll}>
+              {Object.entries(responses).map(([item, status]) => (
+                <View key={item} style={styles.reportItem}>
+                  <Text style={styles.reportItemText}>{item}:</Text>
+                  <Text
+                    style={[
+                      styles.reportStatusText,
+                      status === "OK" ? styles.statusOk : styles.statusNok,
+                    ]}
+                  >
+                    {status}
+                  </Text>
+                </View>
+              ))}
+            </ScrollView>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.secondary, marginTop: 10 },
+              ]}
+              onPress={handleSaveAndExit}
+              disabled={sending}
+            >
+              {sending ? (
+                <ActivityIndicator color={COLORS.white} />
+              ) : (
+                <Text style={styles.actionButtonText}>ENVIAR</Text>
+              )}
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.disabled, marginTop: 10 },
+              ]}
+              onPress={() => setModalVisible(false)}
+              disabled={sending}
+            >
+              <Text style={styles.actionButtonText}>CANCELAR</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={successModalVisible}
+        onRequestClose={() => {}}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.successCard}>
+            <View style={styles.iconCircle}>
+              <Ionicons name="checkmark" size={40} color={COLORS.white} />
+            </View>
+            <Text style={styles.successTitle}>Sucesso!</Text>
+            <TouchableOpacity
+              style={styles.successBtnPrimary}
+              onPress={handleBackToMenu}
+            >
+              <Text style={styles.successBtnTextPrimary}>Voltar ao Menu</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    ...(Platform.OS === "web"
+      ? { maxHeight: "100vh", overflow: "hidden" }
+      : {}),
+  },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  backButton: { marginRight: SIZES.padding },
+  headerTitle: { fontSize: SIZES.h2, fontWeight: "bold", color: COLORS.white },
+  headerSubtitle: { fontSize: SIZES.h3, color: COLORS.white, opacity: 0.8 },
+  listContainer: { paddingTop: SIZES.base },
+  actionButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  actionButtonText: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: SIZES.base,
+  },
+  actionButtonDisabled: { backgroundColor: COLORS.disabled },
+  progressText: {
+    textAlign: "center",
+    marginBottom: 10,
+    fontSize: 14,
+    color: COLORS.textSecondary,
+  },
+  contentContainer: { flex: 1, padding: SIZES.padding },
+  pickerTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+    marginBottom: SIZES.base,
+  },
+  pickerSubtitle: {
+    fontSize: SIZES.body,
+    color: COLORS.textSecondary,
+    marginBottom: SIZES.padding,
+  },
+  pickerWrapper: {
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+    overflow: "hidden",
+  },
+  pickerElement: { width: "100%", height: 60, color: COLORS.textPrimary },
+  questionCard: {
+    backgroundColor: COLORS.white,
+    padding: 15,
+    marginVertical: 10,
+    borderRadius: SIZES.radius,
+    elevation: 1,
+  },
+  questionTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  textInput: {
+    backgroundColor: COLORS.background,
+    borderRadius: SIZES.radius,
+    borderColor: COLORS.lightGray,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 14,
+    color: COLORS.textPrimary,
+    textAlignVertical: "top",
+    minHeight: 80,
+  },
+  photoContainer: { marginBottom: 20 },
+  addPhotoButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.secondary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  photoThumbContainer: { marginRight: 10, position: "relative" },
+  photoThumb: {
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+  },
+  removeIcon: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: COLORS.danger,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderTopLeftRadius: SIZES.radius * 2,
+    borderTopRightRadius: SIZES.radius * 2,
+    padding: SIZES.padding,
+    paddingBottom: SIZES.padding * 2,
+  },
+  modalTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: COLORS.textPrimary,
+    marginVertical: SIZES.base,
+  },
+  modalScroll: { maxHeight: 200, marginBottom: SIZES.padding },
+  reportItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+  },
+  reportItemText: { fontSize: 14, color: COLORS.textPrimary, flex: 1 },
+  reportStatusText: { fontSize: 14, fontWeight: "bold", marginLeft: 10 },
+  statusOk: { color: COLORS.secondary },
+  statusNok: { color: COLORS.danger },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  successCard: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderRadius: 20,
+    padding: 25,
+    alignItems: "center",
+    elevation: 5,
+  },
+  iconCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: COLORS.secondary,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  successTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  successBtnPrimary: {
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    elevation: 2,
+  },
+  successBtnTextPrimary: {
+    color: COLORS.white,
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+});
+
+
+======================================================================
+ARQUIVO 8: src\screens\CollectorChecklistScreen.js
+======================================================================
+
+import React, { useState, useMemo, useCallback } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Modal,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  StatusBar,
+  TextInput,
+  ActivityIndicator,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Picker } from "@react-native-picker/picker";
+import { useFocusEffect } from "@react-navigation/native";
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { sendReport } from "../services/api";
+import * as ImagePicker from "expo-image-picker";
+import * as ImageManipulator from "expo-image-manipulator";
+
+const KeyboardWrapper = ({ children }) => {
+  if (Platform.OS === "web") {
+    return <View style={{ flex: 1, overflow: "hidden" }}>{children}</View>;
+  }
+  return (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      {children}
+    </KeyboardAvoidingView>
+  );
+};
+
+const MultiButtonSelector = ({
+  title,
+  options,
+  selected,
+  onSelect,
+  severity,
+}) => {
+  let badgeColor = "#F5F5F5",
+    textColor = COLORS.textSecondary;
+  if (severity === "CRÍTICO") {
+    badgeColor = "#FFCDD2";
+    textColor = COLORS.danger;
+  } else if (severity === "MÉDIO") {
+    badgeColor = "#FFE0B2";
+    textColor = "#F57C00";
+  } else if (severity === "BAIXO") {
+    badgeColor = "#E1F5FE";
+    textColor = "#0288D1";
+  }
+
+  return (
+    <View style={styles.questionCard}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 10,
+        }}
+      >
+        <Text style={styles.questionTitle}>{title}</Text>
+        {severity && (
+          <View
+            style={{
+              backgroundColor: badgeColor,
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              borderRadius: 8,
+            }}
+          >
+            <Text
+              style={{ fontSize: 10, fontWeight: "bold", color: textColor }}
+            >
+              {severity}
+            </Text>
+          </View>
+        )}
+      </View>
+      <View style={styles.optionsContainer}>
+        {options &&
+          options.map((option) => {
+            const isSelected = selected === option;
+            return (
+              <TouchableOpacity
+                key={option}
+                style={[
+                  styles.optionButton,
+                  isSelected && styles.optionButtonSelected,
+                ]}
+                onPress={() => onSelect(option)}
+              >
+                <Text
+                  style={[
+                    styles.optionText,
+                    isSelected && styles.optionTextSelected,
+                  ]}
+                >
+                  {option}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
+      </View>
+    </View>
+  );
+};
+
+export default function CollectorChecklistScreen({ route, navigation }) {
+  const {
+    title,
+    userName,
+    date,
+    time,
+    collectorList,
+    collectorQuestions,
+    apiData,
+  } = route.params;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [currentCollector, setCurrentCollector] = useState(null);
+  const [step, setStep] = useState(1);
+  const [photos, setPhotos] = useState([]);
+  const [completedInShift, setCompletedInShift] = useState([]);
+
+  const [turno, setTurno] = useState(null),
+    [vidro, setVidro] = useState(null),
+    [carcaca, setCarcaca] = useState(null),
+    [capa, setCapa] = useState(null),
+    [gatilho, setGatilho] = useState(null),
+    [leitor, setLeitor] = useState(null),
+    [interfaceSys, setInterfaceSys] = useState(null),
+    [sistema, setSistema] = useState(null),
+    [conexao, setConexao] = useState(null),
+    [acao, setAcao] = useState(null),
+    [observacao, setObservacao] = useState("");
+
+  const totalRequiredItems = 10;
+  const answeredItemsCount = useMemo(() => {
+    return [
+      turno,
+      vidro,
+      carcaca,
+      capa,
+      gatilho,
+      leitor,
+      interfaceSys,
+      sistema,
+      conexao,
+      acao,
+    ].filter((f) => f !== null).length;
+  }, [
+    turno,
+    vidro,
+    carcaca,
+    capa,
+    gatilho,
+    leitor,
+    interfaceSys,
+    sistema,
+    conexao,
+    acao,
+  ]);
+
+  const isComplete = useMemo(
+    () => answeredItemsCount === totalRequiredItems,
+    [answeredItemsCount],
+  );
+
+  const getShiftKeyFromAppFormat = (dateStr, timeStr) => {
+    if (!dateStr || !timeStr) return "";
+    const [day, month, year] = dateStr.split("/");
+    const [hour, minute] = timeStr.split(":");
+
+    const h = parseInt(hour, 10);
+    const m = parseInt(minute, 10);
+    let d = new Date(year, month - 1, day);
+
+    if (h < 8) d.setDate(d.getDate() - 1);
+
+    const pDay = String(d.getDate()).padStart(2, "0");
+    const pMonth = String(d.getMonth() + 1).padStart(2, "0");
+
+    const isNight = h > 18 || (h === 18 && m > 0) || h < 8;
+
+    return `${pDay}/${pMonth}/${d.getFullYear()}_${isNight ? "NOTURNO" : "DIURNO"}`;
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      const loadCompleted = async () => {
+        const serverCompleted = apiData?.completedThisShift?.collectors || [];
+        const currentShiftKey = getShiftKeyFromAppFormat(date, time);
+        const keys = await AsyncStorage.getAllKeys();
+        const savedReports = await AsyncStorage.multiGet(
+          keys.filter((k) => k.startsWith("@report_")),
+        );
+        const localCompleted = [];
+
+        savedReports.forEach(([key, value]) => {
+          const report = JSON.parse(value);
+          if (
+            report.collectorNumber &&
+            getShiftKeyFromAppFormat(report.date, report.time) ===
+              currentShiftKey
+          ) {
+            localCompleted.push(report.collectorNumber);
+          }
+        });
+        setCompletedInShift([
+          ...new Set([...serverCompleted, ...localCompleted]),
+        ]);
+      };
+      loadCompleted();
+    }, [apiData]),
+  );
+
+  const handleStartChecklist = () => {
+    if (completedInShift.includes(currentCollector)) {
+      Alert.alert(
+        "Turno Concluído",
+        `O coletor ${currentCollector} já foi inspecionado neste turno!`,
+      );
+      return;
+    }
+    setStep(2);
+  };
+
+  const handleTakePhoto = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      quality: 0.5,
+    });
+    if (!result.canceled) {
+      const manipResult = await ImageManipulator.manipulateAsync(
+        result.assets[0].uri,
+        [{ resize: { width: 800 } }],
+        {
+          compress: 0.5,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true,
+        },
+      );
+      setPhotos([...photos, manipResult]);
+    }
+  };
+
+  const handleRemovePhoto = (i) =>
+    setPhotos(photos.filter((_, index) => index !== i));
+
+  const handleOpenReport = () => setModalVisible(true);
+
+  const handleSaveAndExit = async () => {
+    setSending(true);
+    const responses = {
+      TURNO: turno,
+      VIDRO: vidro,
+      CARCAÇA: carcaca,
+      CAPA: capa,
+      GATILHO: gatilho,
+      LEITOR: leitor,
+      INTERFACE: interfaceSys,
+      SISTEMA: sistema,
+      CONEXÃO: conexao,
+      AÇÃO: acao,
+      OBSERVAÇÃO: observacao || "Nenhuma",
+    };
+    try {
+      const timestamp = new Date().toISOString();
+      const uniqueId = `ID-${Date.now()}`;
+      const photosBase64 = photos.map((p) => p.base64);
+      const reportData = {
+        id: uniqueId,
+        timestamp,
+        equipmentTitle: title,
+        userName,
+        date,
+        time,
+        collectorNumber: currentCollector,
+        responses,
+        photosBase64,
+      };
+      await sendReport(reportData);
+      const localReport = {
+        ...reportData,
+        photosBase64: [],
+        hasPhotos: photos.length > 0,
+      };
+      await AsyncStorage.setItem(
+        `@report_${timestamp}`,
+        JSON.stringify(localReport),
+      );
+      setModalVisible(false);
+      setSuccessModalVisible(true);
+    } catch (e) {
+      Alert.alert("Erro ao enviar");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const handleBackToMenu = () => {
+    setSuccessModalVisible(false);
+    navigation.popToTop();
+  };
+
+  if (step === 1) {
+    return (
+      <SafeAreaView style={styles.screenContainer}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent={true}
+        />
+        <View style={styles.headerContainer}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.headerTitle}>Etapa 1 de 2</Text>
+            <Text style={styles.headerSubtitle}>{title}</Text>
+          </View>
+        </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.pickerTitle}>NÚMERO DO COLETOR *</Text>
+          <View style={styles.pickerWrapper}>
+            <Picker
+              selectedValue={currentCollector}
+              onValueChange={setCurrentCollector}
+              style={styles.pickerElement}
+              dropdownIconColor={COLORS.primary}
+            >
+              {collectorList.map((c, i) => (
+                <Picker.Item
+                  key={i}
+                  label={c.label}
+                  value={c.value}
+                  color={COLORS.textPrimary}
+                />
+              ))}
+            </Picker>
+          </View>
+        </View>
+        <View style={{ padding: SIZES.padding }}>
+          <TouchableOpacity
+            style={[
+              styles.actionButton,
+              { backgroundColor: COLORS.primary },
+              !currentCollector && styles.actionButtonDisabled,
+            ]}
+            onPress={handleStartChecklist}
+            disabled={!currentCollector}
+          >
+            <Text style={styles.actionButtonText}>PROSSEGUIR</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  return (
+    <SafeAreaView style={styles.screenContainer}>
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+      <View style={styles.headerContainer}>
+        <TouchableOpacity style={styles.backButton} onPress={() => setStep(1)}>
+          <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.headerTitle}>Checklist</Text>
+          <Text style={styles.headerSubtitle}>
+            {title} (Nº {currentCollector})
+          </Text>
+        </View>
+      </View>
+
+      <KeyboardWrapper>
+        <ScrollView
+          style={[{ flex: 1 }, Platform.OS === "web" && { overflow: "auto" }]}
+          contentContainerStyle={{ paddingBottom: 100 }}
+        >
+          <MultiButtonSelector
+            title="TURNO"
+            options={collectorQuestions.TURNO}
+            selected={turno}
+            onSelect={setTurno}
+            severity="BAIXO"
+          />
+          <MultiButtonSelector
+            title="VIDRO"
+            options={collectorQuestions.VIDRO}
+            selected={vidro}
+            onSelect={setVidro}
+            severity="MÉDIO"
+          />
+          <MultiButtonSelector
+            title="CARCAÇA"
+            options={collectorQuestions.CARCAÇA}
+            selected={carcaca}
+            onSelect={setCarcaca}
+            severity="BAIXO"
+          />
+          <MultiButtonSelector
+            title="CAPA"
+            options={collectorQuestions.CAPA}
+            selected={capa}
+            onSelect={setCapa}
+            severity="BAIXO"
+          />
+          <MultiButtonSelector
+            title="GATILHO"
+            options={collectorQuestions.GATILHO}
+            selected={gatilho}
+            onSelect={setGatilho}
+            severity="CRÍTICO"
+          />
+          <MultiButtonSelector
+            title="LEITOR"
+            options={collectorQuestions.LEITOR}
+            selected={leitor}
+            onSelect={setLeitor}
+            severity="CRÍTICO"
+          />
+          <MultiButtonSelector
+            title="INTERFACE"
+            options={collectorQuestions.INTERFACE}
+            selected={interfaceSys}
+            onSelect={setInterfaceSys}
+            severity="MÉDIO"
+          />
+          <MultiButtonSelector
+            title="SISTEMA"
+            options={collectorQuestions.SISTEMA}
+            selected={sistema}
+            onSelect={setSistema}
+            severity="CRÍTICO"
+          />
+          <MultiButtonSelector
+            title="CONEXÃO"
+            options={collectorQuestions.CONEXÃO}
+            selected={conexao}
+            onSelect={setConexao}
+            severity="CRÍTICO"
+          />
+          <MultiButtonSelector
+            title="AÇÃO"
+            options={collectorQuestions.AÇÃO}
+            selected={acao}
+            onSelect={setAcao}
+            severity="BAIXO"
+          />
+          <View style={styles.questionCard}>
+            <Text style={styles.questionTitle}>OBSERVAÇÃO</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Observação (opcional)"
+              placeholderTextColor={COLORS.disabled}
+              value={observacao}
+              onChangeText={setObservacao}
+              multiline={true}
+              numberOfLines={3}
+            />
+          </View>
+          <View
+            style={{ paddingHorizontal: SIZES.padding / 2, marginBottom: 20 }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 10,
+              }}
+            >
+              <Text style={{ fontWeight: "bold", color: COLORS.textPrimary }}>
+                Evidências ({photos.length})
+              </Text>
+              <TouchableOpacity
+                style={styles.addPhotoButton}
+                onPress={handleTakePhoto}
+              >
+                <Ionicons name="camera" size={20} color={COLORS.white} />
+                <Text
+                  style={{
+                    color: COLORS.white,
+                    marginLeft: 5,
+                    fontWeight: "bold",
+                  }}
+                >
+                  Add Foto
+                </Text>
+              </TouchableOpacity>
+            </View>
+            {photos.length > 0 ? (
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                style={{ marginTop: 5 }}
+              >
+                {photos.map((p, index) => (
+                  <View key={index} style={styles.photoThumbContainer}>
+                    <Image source={{ uri: p.uri }} style={styles.photoThumb} />
+                    <TouchableOpacity
+                      style={styles.removeIcon}
+                      onPress={() => handleRemovePhoto(index)}
+                    >
+                      <Ionicons name="trash" size={16} color={COLORS.white} />
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </ScrollView>
+            ) : (
+              <Text
+                style={{
+                  color: COLORS.disabled,
+                  fontStyle: "italic",
+                  fontSize: 12,
+                }}
+              >
+                Nenhuma foto anexada.
+              </Text>
+            )}
+          </View>
+          <View style={{ paddingHorizontal: SIZES.padding }}>
+            <Text style={styles.progressText}>
+              {answeredItemsCount} / {totalRequiredItems} itens
+            </Text>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.primary },
+                !isComplete && styles.actionButtonDisabled,
+              ]}
+              onPress={handleOpenReport}
+              disabled={!isComplete}
+            >
+              <Text style={styles.actionButtonText}>FINALIZAR</Text>
+              <Ionicons
+                name="checkmark-done"
+                size={20}
+                color={COLORS.white}
+                style={{ marginLeft: 10 }}
+              />
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardWrapper>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Ionicons
+              name="document-text-outline"
+              size={40}
+              color={COLORS.primary}
+              style={{ alignSelf: "center" }}
+            />
+            <Text style={styles.modalTitle}>Resumo</Text>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.secondary, marginTop: 10 },
+              ]}
+              onPress={handleSaveAndExit}
+              disabled={sending}
+            >
+              {sending ? (
+                <ActivityIndicator color={COLORS.white} />
+              ) : (
+                <Text style={styles.actionButtonText}>ENVIAR</Text>
+              )}
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                { backgroundColor: COLORS.disabled, marginTop: 10 },
+              ]}
+              onPress={() => setModalVisible(false)}
+              disabled={sending}
+            >
+              <Text style={styles.actionButtonText}>CANCELAR</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={successModalVisible}
+        onRequestClose={() => {}}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.successCard}>
+            <Text style={styles.successTitle}>Sucesso!</Text>
+            <TouchableOpacity
+              style={styles.successBtnPrimary}
+              onPress={handleBackToMenu}
+            >
+              <Text style={styles.successBtnTextPrimary}>OK</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    ...(Platform.OS === "web"
+      ? { maxHeight: "100vh", overflow: "hidden" }
+      : {}),
+  },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  backButton: { marginRight: SIZES.padding },
+  headerTitle: { fontSize: SIZES.h2, fontWeight: "bold", color: COLORS.white },
+  headerSubtitle: { fontSize: SIZES.h3, color: COLORS.white, opacity: 0.8 },
+  contentContainer: { flex: 1, padding: SIZES.padding },
+  actionButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  actionButtonText: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: SIZES.base,
+  },
+  actionButtonDisabled: { backgroundColor: COLORS.disabled },
+  progressText: {
+    textAlign: "center",
+    marginBottom: 10,
+    fontSize: 14,
+    color: COLORS.textSecondary,
+  },
+  pickerTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+    marginBottom: SIZES.base,
+  },
+  pickerWrapper: {
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+    overflow: "hidden",
+  },
+  pickerElement: { width: "100%", height: 60, color: COLORS.textPrimary },
+  questionCard: {
+    backgroundColor: COLORS.white,
+    padding: 15,
+    marginVertical: 10,
+    marginHorizontal: 15,
+    borderRadius: SIZES.radius,
+    elevation: 1,
+  },
+  questionTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  optionsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    margin: -SIZES.base / 2,
+  },
+  optionButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: SIZES.radius,
+    borderWidth: 1.5,
+    borderColor: COLORS.primary,
+    backgroundColor: "#EBF2FF",
+    margin: SIZES.base / 2,
+  },
+  optionButtonSelected: { backgroundColor: COLORS.primary },
+  optionText: {
+    fontSize: SIZES.font,
+    fontWeight: "600",
+    color: COLORS.primary,
+  },
+  optionTextSelected: { color: COLORS.white },
+  textInput: {
+    backgroundColor: COLORS.background,
+    borderRadius: SIZES.radius,
+    borderColor: COLORS.lightGray,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 14,
+    color: COLORS.textPrimary,
+    textAlignVertical: "top",
+    minHeight: 80,
+  },
+  addPhotoButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.secondary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  photoThumbContainer: { marginRight: 10, position: "relative" },
+  photoThumb: {
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+  },
+  removeIcon: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: COLORS.danger,
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderTopLeftRadius: SIZES.radius * 2,
+    borderTopRightRadius: SIZES.radius * 2,
+    padding: SIZES.padding,
+    paddingBottom: SIZES.padding * 2,
+  },
+  modalTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: COLORS.textPrimary,
+    marginVertical: SIZES.base,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  successCard: {
+    width: "100%",
+    backgroundColor: COLORS.white,
+    borderRadius: 20,
+    padding: 25,
+    alignItems: "center",
+    elevation: 5,
+  },
+  successTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+    marginBottom: 5,
+  },
+  successBtnPrimary: {
+    flexDirection: "row",
+    width: "100%",
+    backgroundColor: COLORS.primary,
+    paddingVertical: 12,
+    borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    elevation: 2,
+  },
+  successBtnTextPrimary: {
+    color: COLORS.white,
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+});
+
+
+======================================================================
+ARQUIVO 9: src\screens\FiveSMenuScreen.js
+======================================================================
+
+import React, { useState, useCallback } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  Alert,
+  Modal,
+  ScrollView,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { COLORS, SIZES } from "../colors/theme";
+
+const formatTitleCase = (text) => {
+  if (!text) return "";
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+export default function FiveSMenuScreen({ route, navigation }) {
+  const { userName, date, time, apiData } = route.params;
+  const [allCompletedSectors, setAllCompletedSectors] = useState([]);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedArea, setSelectedArea] = useState(null);
+
+  const [subSelectionVisible, setSubSelectionVisible] = useState(false);
+  const [subSelectionType, setSubSelectionType] = useState(null);
+  const [currentSectorTag, setCurrentSectorTag] = useState(null);
+  const [subOptions, setSubOptions] = useState([]);
+
+  // NOVA LÓGICA DO TURNO COM MINUTOS
+  const getShiftKeyFromAppFormat = (dateStr, timeStr) => {
+    if (!dateStr || !timeStr) return "";
+    const [day, month, year] = dateStr.split("/");
+    const [hour, minute] = timeStr.split(":");
+
+    const h = parseInt(hour, 10);
+    const m = parseInt(minute, 10);
+    let d = new Date(year, month - 1, day);
+
+    // Se for antes das 8h da manhã, pertence ao dia anterior
+    if (h < 8) d.setDate(d.getDate() - 1);
+
+    const pDay = String(d.getDate()).padStart(2, "0");
+    const pMonth = String(d.getMonth() + 1).padStart(2, "0");
+
+    // Nova Regra de Minutos: É noturno se passar das 18:00 (18h e mais que 0 min) ou antes das 08:00
+    const isNight = h > 18 || (h === 18 && m > 0) || h < 8;
+
+    return `${pDay}/${pMonth}/${d.getFullYear()}_${isNight ? "NOTURNO" : "DIURNO"}`;
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      const loadCompletedSectors = async () => {
+        try {
+          const serverCompleted = apiData?.completedThisShift?.s5 || [];
+          const currentShiftKey = getShiftKeyFromAppFormat(date, time);
+
+          const keys = await AsyncStorage.getAllKeys();
+          const reportKeys = keys.filter((key) => key.startsWith("@report_"));
+          const savedReports = await AsyncStorage.multiGet(reportKeys);
+
+          const localCompleted = [];
+          savedReports.forEach(([key, value]) => {
+            const report = JSON.parse(value);
+            if (
+              report.equipmentTitle === "Auditoria 5S" &&
+              report.sectorDetail
+            ) {
+              if (
+                getShiftKeyFromAppFormat(report.date, report.time) ===
+                currentShiftKey
+              ) {
+                localCompleted.push(report.sectorDetail);
+              }
+            }
+          });
+          const combined = [
+            ...new Set([...serverCompleted, ...localCompleted]),
+          ];
+          setAllCompletedSectors(combined);
+        } catch (e) {
+          console.error("Erro ao carregar setores concluídos:", e);
+        }
+      };
+      loadCompletedSectors();
+    }, [apiData]),
+  );
+
+  useFocusEffect(
+    useCallback(() => {
+      if (route.params?.autoOpenType) {
+        const type = route.params.autoOpenType;
+        setSelectedArea("DEPOSITO");
+        setCurrentStep(2);
+        if (type === "Rua") {
+          setupSubSelection("Rua", 18, "RUA");
+        } else if (type === "Doca") {
+          setupSubSelection("Doca", 5, "DOCAS");
+        }
+        navigation.setParams({ autoOpenType: null });
+      }
+    }, [route.params]),
+  );
+
+  const handleAreaSelect = (area) => {
+    setSelectedArea(area);
+    setCurrentStep(2);
+  };
+
+  const setupSubSelection = (prefix, count, tag) => {
+    const options = Array.from(
+      { length: count },
+      (_, i) => `${prefix} ${i + 1}`,
+    );
+    setSubOptions(options);
+    setSubSelectionType(prefix);
+    setCurrentSectorTag(tag);
+    setSubSelectionVisible(true);
+  };
+
+  const handleSectorPress = (sectorItem) => {
+    if (!sectorItem || !sectorItem.name) return;
+    const sectorName = sectorItem.name;
+    const sectorTag = sectorItem.tag || "DEPOSITO";
+    if (allCompletedSectors.includes(sectorName)) {
+      Alert.alert(
+        "Concluído",
+        `O setor "${formatTitleCase(sectorName)}" já foi auditado neste turno.`,
+      );
+      return;
+    }
+
+    if (sectorName.toLowerCase() === "rua" && selectedArea === "DEPOSITO") {
+      setupSubSelection("Rua", 18, sectorTag);
+      return;
+    }
+    if (sectorName.toLowerCase() === "docas" && selectedArea === "DEPOSITO") {
+      setupSubSelection("Doca", 5, sectorTag);
+      return;
+    }
+    startChecklist(sectorName, sectorTag);
+  };
+
+  const handleSubSelection = (fullSectorName) => {
+    if (allCompletedSectors.includes(fullSectorName)) {
+      Alert.alert(
+        "Concluído",
+        `O local "${formatTitleCase(fullSectorName)}" já foi auditado neste turno.`,
+      );
+      return;
+    }
+    setSubSelectionVisible(false);
+    startChecklist(fullSectorName, currentSectorTag);
+  };
+
+  const startChecklist = (sectorDetail, tag) => {
+    const questionsMap = apiData?.data5S?.questions || {};
+    let questions = questionsMap[tag];
+    if (!questions && tag) {
+      questions = questionsMap[tag.toUpperCase()];
+    }
+    if (!questions) {
+      questions = questionsMap[selectedArea];
+    }
+    if (!questions) questions = [];
+
+    if (questions.length === 0) {
+      Alert.alert("Atenção", `Nenhuma pergunta encontrada para: "${tag}".`);
+      return;
+    }
+
+    navigation.navigate("Checklist5S", {
+      title: "Auditoria 5S",
+      userName,
+      date,
+      time,
+      areaType: formatTitleCase(selectedArea || "DEPOSITO"),
+      sectorDetail: formatTitleCase(sectorDetail),
+      items: questions,
+    });
+  };
+
+  if (currentStep === 1) {
+    return (
+      <SafeAreaView
+        style={styles.container}
+        edges={["top", "bottom", "left", "right"]}
+      >
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Auditoria 5S</Text>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.subtitle}>Selecione a Área Macro:</Text>
+          <TouchableOpacity
+            style={styles.bigButton}
+            onPress={() => handleAreaSelect("DEPOSITO")}
+          >
+            <MaterialCommunityIcons
+              name="warehouse"
+              size={40}
+              color={COLORS.white}
+            />
+            <Text style={styles.bigButtonText}>Depósito</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.bigButton, { backgroundColor: COLORS.secondary }]}
+            onPress={() => handleAreaSelect("OFFICE")}
+          >
+            <MaterialCommunityIcons
+              name="office-building"
+              size={40}
+              color={COLORS.white}
+            />
+            <Text style={styles.bigButtonText}>Office</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.bigButton, { backgroundColor: "#424242" }]}
+            onPress={() => handleAreaSelect("PÁTIO")}
+          >
+            <MaterialCommunityIcons
+              name="truck"
+              size={40}
+              color={COLORS.white}
+            />
+            <Text style={styles.bigButtonText}>Pátio</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  const sectorsList = apiData?.data5S?.sectors?.[selectedArea] || [];
+
+  return (
+    <SafeAreaView
+      style={styles.container}
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => setCurrentStep(1)}>
+          <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.headerTitle}>Setores</Text>
+          <Text style={styles.headerSubtitle}>
+            {formatTitleCase(selectedArea)}
+          </Text>
+        </View>
+      </View>
+      <FlatList
+        data={sectorsList}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={{ padding: SIZES.padding }}
+        renderItem={({ item }) => {
+          const isCategoryGroup =
+            item.name.toLowerCase() === "rua" ||
+            item.name.toLowerCase() === "docas";
+          const isCompleted =
+            !isCategoryGroup && allCompletedSectors.includes(item.name);
+          return (
+            <TouchableOpacity
+              style={[
+                styles.sectorCard,
+                isCompleted && styles.sectorCardDisabled,
+              ]}
+              onPress={() => !isCompleted && handleSectorPress(item)}
+              disabled={isCompleted}
+            >
+              <View
+                style={{ flexDirection: "row", alignItems: "center", flex: 1 }}
+              >
+                <Text
+                  style={[
+                    styles.sectorText,
+                    isCompleted && styles.sectorTextDisabled,
+                  ]}
+                  numberOfLines={2}
+                >
+                  {formatTitleCase(item.name)}
+                </Text>
+                {isCompleted && (
+                  <Text style={styles.completedBadge}>
+                    {" "}
+                    (FEITO NESTE TURNO){" "}
+                  </Text>
+                )}
+              </View>
+              {isCompleted ? (
+                <Ionicons
+                  name="checkmark-circle"
+                  size={24}
+                  color={COLORS.secondary}
+                />
+              ) : (
+                <Ionicons
+                  name="chevron-forward"
+                  size={20}
+                  color={COLORS.textSecondary}
+                />
+              )}
+            </TouchableOpacity>
+          );
+        }}
+      />
+      <Modal visible={subSelectionVisible} transparent animationType="slide">
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>
+              Selecione: {formatTitleCase(subSelectionType)}
+            </Text>
+            <ScrollView style={{ maxHeight: 300 }}>
+              {subOptions.map((opt) => {
+                const isSubCompleted = allCompletedSectors.includes(opt);
+                return (
+                  <TouchableOpacity
+                    key={opt}
+                    style={[
+                      styles.subOptionButton,
+                      isSubCompleted && styles.subOptionDisabled,
+                    ]}
+                    onPress={() => !isSubCompleted && handleSubSelection(opt)}
+                    disabled={isSubCompleted}
+                  >
+                    <Text
+                      style={[
+                        styles.subOptionText,
+                        isSubCompleted && styles.subOptionTextDisabled,
+                      ]}
+                    >
+                      {formatTitleCase(opt)}
+                    </Text>
+                    {isSubCompleted && (
+                      <Ionicons
+                        name="checkmark-circle"
+                        size={20}
+                        color={COLORS.secondary}
+                      />
+                    )}
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setSubSelectionVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>Cancelar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: COLORS.background },
+  header: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  headerTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    color: COLORS.white,
+    marginLeft: 10,
+  },
+  headerSubtitle: {
+    fontSize: SIZES.body,
+    color: COLORS.white,
+    marginLeft: 10,
+    opacity: 0.8,
+  },
+  content: { flex: 1, padding: SIZES.padding, justifyContent: "center" },
+  subtitle: {
+    fontSize: SIZES.h3,
+    color: COLORS.textPrimary,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  bigButton: {
+    flexDirection: "row",
+    backgroundColor: COLORS.primary,
+    padding: 25,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+    elevation: 5,
+  },
+  bigButtonText: {
+    color: COLORS.white,
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    marginLeft: 15,
+  },
+  sectorCard: {
+    backgroundColor: COLORS.white,
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: SIZES.radius,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    elevation: 2,
+  },
+  sectorCardDisabled: { backgroundColor: "#E0E0E0", elevation: 0 },
+  sectorText: { fontSize: SIZES.h3, color: COLORS.textPrimary, flexShrink: 1 },
+  sectorTextDisabled: { color: COLORS.disabled },
+  completedBadge: { fontSize: 10, color: COLORS.secondary, fontWeight: "bold" },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    padding: 20,
+  },
+  modalContent: {
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
+    padding: 20,
+    maxHeight: "80%",
+  },
+  modalTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    marginBottom: 15,
+    textAlign: "center",
+  },
+  subOptionButton: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  subOptionDisabled: { backgroundColor: "#F5F5F5" },
+  subOptionText: { fontSize: SIZES.h3 },
+  subOptionTextDisabled: {
+    color: COLORS.disabled,
+    textDecorationLine: "line-through",
+  },
+  closeButton: {
+    marginTop: 15,
+    backgroundColor: COLORS.danger,
+    padding: 15,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+  },
+  closeButtonText: { color: COLORS.white, fontWeight: "bold" },
+});
+
+
+======================================================================
+ARQUIVO 10: src\screens\LoginScreen.js
+======================================================================
+
+// Local: src/screens/LoginScreen.js
+
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  Platform,
+  KeyboardAvoidingView,
+  ScrollView,
+  StatusBar,
+  Image,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from "@react-navigation/native";
+// Ajuste do caminho do tema
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons } from "@expo/vector-icons";
+
+const USER_NAME_KEY = "@userName";
+
+export default function LoginScreen({ navigation }) {
+  const [userName, setUserName] = useState("");
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) {
+      checkSavedUser();
+    }
+  }, [isFocused]);
+
+  const checkSavedUser = async () => {
+    try {
+      const savedUser = await AsyncStorage.getItem(USER_NAME_KEY);
+      if (savedUser) {
+        navigation.replace("Menu");
+      }
+    } catch (e) {
+      console.error("Erro ao buscar usuário salvo:", e);
+    }
+  };
+
+  const handleLogin = async () => {
+    if (!userName.trim()) {
+      Alert.alert("Atenção", "Por favor, insira seu nome completo.");
+      return;
+    }
+
+    try {
+      await AsyncStorage.setItem(USER_NAME_KEY, userName.trim());
+      navigation.replace("Menu");
+    } catch (e) {
+      console.error("Erro ao salvar o nome:", e);
+      Alert.alert("Erro", "Não foi possível salvar seu nome.");
+    }
+  };
+
+  return (
+    <SafeAreaView
+      style={styles.safeContainer}
+      // MUDANÇA IMPORTANTE: Adicionado "top" para o APK
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.white} />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.logoContainer}>
+            <Image
+              source={{ uri: "https://i.ibb.co/wFtMkbHg/mercante-logo.png" }}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
+
+          {/* MUDANÇA DE COR AQUI */}
+          <Text style={styles.title}>Bem-vindo(a)</Text>
+
+          <Text style={styles.subtitle}>
+            Identifique-se para iniciar o checklist
+          </Text>
+
+          <Text style={styles.label}>Nome Completo:</Text>
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name="person-outline"
+              size={22}
+              color={COLORS.textSecondary}
+              style={styles.inputIcon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu nome"
+              placeholderTextColor={COLORS.textSecondary}
+              value={userName}
+              onChangeText={setUserName}
+              autoCapitalize="words"
+            />
+          </View>
+
+          <TouchableOpacity style={styles.continueButton} onPress={handleLogin}>
+            <Text style={styles.continueButtonText}>Entrar</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    padding: SIZES.padding,
+    justifyContent: "center",
+  },
+  logoContainer: {
+    alignItems: "center",
+    marginBottom: SIZES.padding * 2,
+  },
+  logoImage: {
+    width: "70%",
+    height: 200,
+    tintColor: COLORS.primary,
+  },
+  title: {
+    fontSize: SIZES.h1,
+    fontWeight: "bold",
+    textAlign: "center",
+    // COR ALTERADA PARA AZUL
+    color: COLORS.primary,
+    marginBottom: SIZES.base,
+  },
+  subtitle: {
+    fontSize: SIZES.h3,
+    textAlign: "center",
+    color: COLORS.textSecondary,
+    marginBottom: SIZES.padding * 2,
+  },
+  label: {
+    fontSize: SIZES.body,
+    color: COLORS.textPrimary,
+    marginBottom: SIZES.base,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.background,
+    borderRadius: SIZES.radius,
+    marginBottom: SIZES.padding,
+    paddingHorizontal: SIZES.padding / 2,
+  },
+  inputIcon: {
+    marginRight: SIZES.padding / 2,
+  },
+  input: {
+    flex: 1,
+    paddingVertical: Platform.OS === "web" ? 15 : 12,
+    fontSize: SIZES.h3,
+    color: COLORS.textPrimary,
+  },
+  continueButton: {
+    backgroundColor: COLORS.primary,
+    paddingVertical: 15,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    shadowColor: COLORS.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 6,
+  },
+  continueButtonText: {
+    color: COLORS.white,
+    fontSize: SIZES.h3,
+    fontWeight: "bold",
+  },
+});
+
+
+======================================================================
+ARQUIVO 11: src\screens\MenuScreen.js
+======================================================================
+
+// Local: src/screens/MenuScreen.js
+
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StatusBar,
+  FlatList,
+  Alert,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { COLORS, SIZES } from "../colors/theme";
+import { fetchConfig } from "../services/api";
+
+const USER_NAME_KEY = "@userName";
+
+const CHECKLIST_ITEMS = [
+  {
+    key: "combustao",
+    title: "Empilhadeira a Combustão",
+    icon: "fuel",
+  },
+  {
+    key: "eletrica",
+    title: "Empilhadeira Elétrica",
+    icon: "battery-charging",
+  },
+  {
+    key: "transpaleteira",
+    title: "Transpaleteira",
+    imageUrl: require("../../assets/transpaleteira_menu.png"),
+  },
+  {
+    key: "paleteira",
+    title: "Paleteira",
+    imageUrl: require("../../assets/paleteira_menu.png"),
+  },
+  {
+    key: "coletores",
+    title: "Coletores",
+    icon: "barcode-scan",
+  },
+  {
+    key: "5s",
+    title: "Auditoria 5S",
+    icon: "clipboard-check-outline",
+  },
+];
+
+export default function MenuScreen({ navigation }) {
+  const [loading, setLoading] = useState(true);
+  const [apiData, setApiData] = useState(null);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const data = await fetchConfig();
+      setApiData(data);
+    } catch (e) {
+      Alert.alert(
+        "Atenção",
+        "Não foi possível baixar os checklists atualizados. Verifique sua internet.",
+        [{ text: "Tentar Novamente", onPress: loadData }],
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChecklistPress = async (itemTitle) => {
+    if (!apiData) {
+      Alert.alert("Aguarde", "Carregando dados do sistema...");
+      return;
+    }
+
+    try {
+      const userName = await AsyncStorage.getItem(USER_NAME_KEY);
+      if (!userName) {
+        Alert.alert("Erro", "Nome de usuário não encontrado.", [
+          { text: "OK", onPress: () => navigation.replace("Login") },
+        ]);
+        return;
+      }
+
+      const now = new Date();
+      const date = now.toLocaleDateString("pt-BR");
+      const time = now.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      // 1. Auditoria 5S
+      if (itemTitle === "Auditoria 5S") {
+        navigation.navigate("FiveSMenu", {
+          userName: userName,
+          date: date,
+          time: time,
+          apiData: apiData, // Já estava correto
+        });
+        return;
+      }
+
+      // 2. Coletores
+      if (itemTitle === "Coletores") {
+        navigation.navigate("CollectorChecklist", {
+          title: itemTitle,
+          userName: userName,
+          date: date,
+          time: time,
+          collectorList: apiData.collectorList,
+          collectorQuestions: apiData.collectorQuestions,
+          apiData: apiData, // <-- ADICIONADO
+        });
+        return;
+      }
+
+      // 3. Empilhadeiras e Outros (Geral)
+      const questions = apiData.checklistsData[itemTitle] || [];
+      if (questions.length === 0) {
+        Alert.alert("Aviso", "Nenhuma pergunta encontrada na planilha.");
+        return;
+      }
+
+      let specificEquipmentList = null;
+      if (
+        apiData.forkliftsData &&
+        apiData.forkliftsData[itemTitle] &&
+        apiData.forkliftsData[itemTitle].length > 0
+      ) {
+        specificEquipmentList = apiData.forkliftsData[itemTitle];
+      }
+
+      navigation.navigate("Checklist", {
+        title: itemTitle,
+        userName: userName,
+        date: date,
+        time: time,
+        items: questions,
+        equipmentList: specificEquipmentList,
+        apiData: apiData, // <-- ADICIONADO
+      });
+    } catch (e) {
+      console.error("Erro ao iniciar checklist:", e);
+      Alert.alert("Erro", "Não foi possível iniciar o checklist.");
+    }
+  };
+
+  const handleReportsPress = () => {
+    navigation.navigate("ReportsList");
+  };
+
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem(USER_NAME_KEY);
+      navigation.replace("Login");
+    } catch (e) {
+      console.error("Erro ao sair:", e);
+    }
+  };
+
+  const renderGridItem = ({ item }) => (
+    <TouchableOpacity
+      style={[styles.card, loading && { opacity: 0.7 }]}
+      onPress={() => handleChecklistPress(item.title)}
+      disabled={loading}
+    >
+      {item.imageUrl ? (
+        <Image
+          source={item.imageUrl}
+          style={styles.cardImage}
+          resizeMode="contain"
+        />
+      ) : (
+        <MaterialCommunityIcons
+          name={item.icon}
+          size={48}
+          color={COLORS.primary}
+        />
+      )}
+      <Text style={styles.cardText}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
+  if (loading) {
+    return (
+      <SafeAreaView style={[styles.safeContainer, styles.loadingContainer]}>
+        <ActivityIndicator size="large" color={COLORS.primary} />
+        <Text style={styles.loadingText}>
+          Sincronizando com Google Sheets...
+        </Text>
+      </SafeAreaView>
+    );
+  }
+
+  return (
+    <SafeAreaView
+      style={styles.safeContainer}
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTitle}>Dashboard</Text>
+        <Text style={styles.headerSubtitle}>Selecione uma atividade</Text>
+      </View>
+
+      <FlatList
+        data={CHECKLIST_ITEMS}
+        renderItem={renderGridItem}
+        keyExtractor={(item) => item.key}
+        numColumns={2}
+        contentContainerStyle={styles.gridContainer}
+        ListHeaderComponent={
+          <Text style={styles.sectionTitle}>Checklists</Text>
+        }
+        ListFooterComponent={
+          <>
+            <Text style={styles.sectionTitle}>Administração</Text>
+            <TouchableOpacity
+              style={[styles.actionButton, styles.reportsButton]}
+              onPress={handleReportsPress}
+            >
+              <Ionicons
+                name="document-text-outline"
+                size={24}
+                color={COLORS.white}
+              />
+              <Text style={styles.actionButtonText}>
+                Relatórios Salvos (Local)
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.actionButton, styles.logoutButton]}
+              onPress={handleLogout}
+            >
+              <Ionicons name="log-out-outline" size={24} color={COLORS.white} />
+              <Text style={styles.actionButtonText}>Sair</Text>
+            </TouchableOpacity>
+          </>
+        }
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  loadingContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    marginTop: 20,
+    fontSize: SIZES.body,
+    color: COLORS.textSecondary,
+  },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    paddingHorizontal: SIZES.padding,
+    paddingTop: SIZES.padding,
+    paddingBottom: SIZES.padding * 2,
+    borderBottomLeftRadius: SIZES.radius * 2,
+    borderBottomRightRadius: SIZES.radius * 2,
+  },
+  headerTitle: {
+    fontSize: SIZES.h1,
+    fontWeight: "bold",
+    color: COLORS.white,
+  },
+  headerSubtitle: {
+    fontSize: SIZES.h3,
+    color: COLORS.white,
+    opacity: 0.8,
+  },
+  gridContainer: {
+    padding: SIZES.padding / 2,
+  },
+  sectionTitle: {
+    fontSize: SIZES.h3,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    margin: SIZES.padding / 2,
+    marginTop: SIZES.padding,
+  },
+  card: {
+    flex: 1,
+    margin: SIZES.padding / 2,
+    padding: SIZES.padding,
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: 160,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  cardImage: {
+    width: 60,
+    height: 48,
+    tintColor: COLORS.primary,
+  },
+  cardText: {
+    marginTop: SIZES.padding / 2,
+    fontSize: SIZES.body,
+    fontWeight: "600",
+    color: COLORS.textSecondary,
+    textAlign: "center",
+  },
+  actionButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 15,
+    borderRadius: SIZES.radius,
+    marginHorizontal: SIZES.padding / 2,
+    marginBottom: SIZES.padding / 2,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  actionButtonText: {
+    color: COLORS.white,
+    fontSize: SIZES.h3,
+    fontWeight: "600",
+    marginLeft: 10,
+  },
+  reportsButton: {
+    backgroundColor: COLORS.secondary,
+  },
+  logoutButton: {
+    backgroundColor: COLORS.danger,
+  },
+});
+
+
+======================================================================
+ARQUIVO 12: src\screens\ReportDetailScreen.js
+======================================================================
+
+// Local: src/screens/ReportDetailScreen.js
+
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+// Ajuste do caminho do tema
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons } from "@expo/vector-icons";
+
+export default function ReportDetailScreen({ route, navigation }) {
+  const { report } = route.params;
+
+  return (
+    <SafeAreaView
+      style={styles.safeContainer}
+      // MUDANÇA: Adicionado "top" para APK
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" size={28} color={COLORS.white} />
+        </TouchableOpacity>
+        <View style={styles.headerTitleContainer}>
+          <Text style={styles.headerTitle} numberOfLines={1}>
+            Relatório
+          </Text>
+          <Text style={styles.headerSubtitle} numberOfLines={1}>
+            {report.equipmentTitle}
+          </Text>
+        </View>
+      </View>
+
+      <ScrollView style={styles.scrollContainer}>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Identificação</Text>
+          <View style={styles.infoRow}>
+            <Ionicons
+              name="person-outline"
+              size={20}
+              color={COLORS.textSecondary}
+              style={styles.infoIcon}
+            />
+            <Text style={styles.infoText}>
+              Operador: <Text style={styles.infoData}>{report.userName}</Text>
+            </Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons
+              name="calendar-outline"
+              size={20}
+              color={COLORS.textSecondary}
+              style={styles.infoIcon}
+            />
+            <Text style={styles.infoText}>
+              Data: <Text style={styles.infoData}>{report.date}</Text>
+            </Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons
+              name="time-outline"
+              size={20}
+              color={COLORS.textSecondary}
+              style={styles.infoIcon}
+            />
+            <Text style={styles.infoText}>
+              Hora: <Text style={styles.infoData}>{report.time}</Text>
+            </Text>
+          </View>
+          {report.collectorNumber && (
+            <View style={styles.infoRow}>
+              <Ionicons
+                name="barcode-outline"
+                size={20}
+                color={COLORS.textSecondary}
+                style={styles.infoIcon}
+              />
+              <Text style={styles.infoText}>
+                Coletor Nº:{" "}
+                <Text style={styles.infoData}>{report.collectorNumber}</Text>
+              </Text>
+            </View>
+          )}
+        </View>
+
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Itens Verificados</Text>
+
+          {report.equipmentTitle === "Coletores"
+            ? Object.entries(report.responses).map(([item, status]) => (
+                <View key={item} style={styles.reportItem}>
+                  <Text style={styles.reportItemTextCollector}>{item}</Text>
+                  <Text style={styles.reportItemValueCollector}>{status}</Text>
+                </View>
+              ))
+            : Object.entries(report.responses).map(([item, status]) => (
+                <View key={item} style={styles.reportItem}>
+                  <Text style={styles.reportItemText}>{item}</Text>
+                  <View
+                    style={[
+                      styles.statusBadge,
+                      status === "OK"
+                        ? styles.statusOkBadge
+                        : styles.statusNokBadge,
+                    ]}
+                  >
+                    <Text style={styles.statusBadgeText}>{status}</Text>
+                  </View>
+                </View>
+              ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  scrollContainer: {
+    flex: 1,
+  },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  backButton: {
+    marginRight: SIZES.padding,
+  },
+  headerTitleContainer: {
+    flex: 1,
+  },
+  headerTitle: {
+    fontSize: SIZES.h2,
+    fontWeight: "bold",
+    color: COLORS.white,
+  },
+  headerSubtitle: {
+    fontSize: SIZES.h3,
+    color: COLORS.white,
+    opacity: 0.8,
+  },
+  card: {
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.radius,
+    padding: SIZES.padding,
+    margin: SIZES.padding / 2,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  cardTitle: {
+    fontSize: SIZES.h3,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+    paddingBottom: SIZES.base,
+    marginBottom: SIZES.base,
+  },
+  infoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: SIZES.base / 2,
+  },
+  infoIcon: {
+    marginRight: SIZES.padding / 2,
+  },
+  infoText: {
+    fontSize: SIZES.body,
+    color: COLORS.textSecondary,
+  },
+  infoData: {
+    fontWeight: "bold",
+    color: COLORS.textPrimary,
+  },
+  reportItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: SIZES.padding / 1.5,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+  },
+  reportItemText: {
+    fontSize: SIZES.body,
+    color: COLORS.textPrimary,
+    flex: 1,
+  },
+  reportItemTextCollector: {
+    fontSize: SIZES.body,
+    color: COLORS.textSecondary,
+    fontWeight: "600",
+    textTransform: "uppercase",
+    flex: 1,
+  },
+  reportItemValueCollector: {
+    fontSize: SIZES.body,
+    color: COLORS.textPrimary,
+    fontWeight: "600",
+    flex: 1,
+    textAlign: "right",
+  },
+  statusBadge: {
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: SIZES.radius,
+    marginLeft: 10,
+  },
+  statusBadgeText: {
+    color: COLORS.white,
+    fontWeight: "bold",
+    fontSize: 12,
+  },
+  statusOkBadge: {
+    backgroundColor: COLORS.secondary,
+  },
+  statusNokBadge: {
+    backgroundColor: COLORS.danger,
+  },
+});
+
+
+======================================================================
+ARQUIVO 13: src\screens\ReportsListScreen.js
+======================================================================
+
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  StatusBar,
+  ActivityIndicator,
+  Alert,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from "@react-navigation/native";
+import { COLORS, SIZES } from "../colors/theme";
+import { Ionicons } from "@expo/vector-icons";
+import { fetchReportHistory } from "../services/api";
+
+export default function ReportsListScreen({ navigation }) {
+  const [localReports, setLocalReports] = useState([]);
+  const [cloudReports, setCloudReports] = useState([]);
+  const [loadingCloud, setLoadingCloud] = useState(false);
+
+  // Controle de abas: 'local' ou 'cloud'
+  const [activeTab, setActiveTab] = useState("local");
+
+  const isFocused = useIsFocused();
+
+  // --- FUNÇÃO ATUALIZADA: Carrega e Limpa Relatórios Antigos ---
+  const loadLocalReports = async () => {
+    try {
+      const keys = await AsyncStorage.getAllKeys();
+      const reportKeys = keys.filter((key) => key.startsWith("@report_"));
+      const savedReports = await AsyncStorage.multiGet(reportKeys);
+
+      const validReports = [];
+      const keysToRemove = [];
+
+      const now = new Date();
+      // 7 dias em milissegundos
+      const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
+
+      savedReports.forEach(([key, value]) => {
+        try {
+          const report = JSON.parse(value);
+          const reportDate = new Date(report.timestamp);
+          const diffInMs = now - reportDate;
+
+          // Se tiver mais de 7 dias, marca para deletar
+          if (diffInMs > sevenDaysInMs) {
+            keysToRemove.push(key);
+          } else {
+            validReports.push(report);
+          }
+        } catch (err) {
+          console.log("Erro ao processar relatório:", key);
+        }
+      });
+
+      // Remove fisicamente do armazenamento
+      if (keysToRemove.length > 0) {
+        await AsyncStorage.multiRemove(keysToRemove);
+        console.log(
+          `Limpeza automática: ${keysToRemove.length} relatórios antigos removidos.`
+        );
+      }
+
+      // Ordena por data (mais recente primeiro)
+      validReports.sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+      );
+      setLocalReports(validReports);
+    } catch (e) {
+      console.error("Erro ao carregar relatórios locais:", e);
+    }
+  };
+
+  // Carrega dados da Nuvem
+  const loadCloudReports = async () => {
+    setLoadingCloud(true);
+    try {
+      const data = await fetchReportHistory();
+      setCloudReports(data);
+    } catch (e) {
+      Alert.alert("Erro", "Não foi possível buscar o histórico na nuvem.");
+    } finally {
+      setLoadingCloud(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      loadLocalReports(); // Agora já faz a limpeza automaticamente
+      if (activeTab === "cloud") loadCloudReports();
+    }
+  }, [isFocused]);
+
+  // Carrega nuvem ao mudar de aba
+  useEffect(() => {
+    if (activeTab === "cloud" && cloudReports.length === 0) {
+      loadCloudReports();
+    }
+  }, [activeTab]);
+
+  const handleReportPress = (report) => {
+    navigation.navigate("ReportDetail", { report: report });
+  };
+
+  const renderReportItem = ({ item }) => {
+    let iconStyle;
+    let iconName;
+
+    if (item.equipmentTitle === "Coletores") {
+      iconStyle = styles.statusIconCollector;
+      iconName = "barcode-outline";
+    } else {
+      const pendenciasCount = item.responses
+        ? Object.values(item.responses).filter((status) => status === "NÃO OK")
+            .length
+        : 0;
+
+      if (pendenciasCount > 0) {
+        iconStyle = styles.statusIconNok;
+        iconName = "warning-outline";
+      } else {
+        iconStyle = styles.statusIconOk;
+        iconName = "checkmark-circle-outline";
+      }
+    }
+
+    return (
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => handleReportPress(item)}
+      >
+        <View style={[styles.statusIcon, iconStyle]}>
+          <Ionicons name={iconName} size={30} color={COLORS.white} />
+        </View>
+
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>
+            {item.equipmentTitle}
+            {item.sectorDetail ? ` - ${item.sectorDetail}` : ""}
+            {item.collectorNumber && item.collectorNumber !== "-"
+              ? ` (Nº ${item.collectorNumber})`
+              : ""}
+          </Text>
+          <Text style={styles.cardSubtitle}>
+            Por: <Text style={{ fontWeight: "bold" }}>{item.userName}</Text>
+          </Text>
+          <Text style={styles.cardSubtitle}>
+            Em: {item.date} - {item.time}
+          </Text>
+        </View>
+
+        <Ionicons
+          name="chevron-forward-outline"
+          size={24}
+          color={COLORS.textSecondary}
+        />
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <SafeAreaView
+      style={styles.safeContainer}
+      edges={["top", "bottom", "left", "right"]}
+    >
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTitle}>Relatórios</Text>
+        <Text style={styles.headerSubtitle}>Histórico de inspeções</Text>
+
+        {/* ABAS DE NAVEGAÇÃO */}
+        <View style={styles.tabContainer}>
+          <TouchableOpacity
+            style={[
+              styles.tabButton,
+              activeTab === "local" && styles.activeTab,
+            ]}
+            onPress={() => setActiveTab("local")}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "local" && styles.activeTabText,
+              ]}
+            >
+              Locais (7 dias)
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.tabButton,
+              activeTab === "cloud" && styles.activeTab,
+            ]}
+            onPress={() => setActiveTab("cloud")}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "cloud" && styles.activeTabText,
+              ]}
+            >
+              Nuvem (Todos)
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {activeTab === "cloud" && loadingCloud ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={COLORS.primary} />
+          <Text style={styles.loadingText}>
+            Buscando dados no Google Sheets...
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={activeTab === "local" ? localReports : cloudReports}
+          renderItem={renderReportItem}
+          keyExtractor={(item, index) =>
+            item.id ? item.id.toString() : index.toString()
+          }
+          contentContainerStyle={styles.listContainer}
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <Ionicons
+                name={
+                  activeTab === "local"
+                    ? "trash-outline"
+                    : "cloud-offline-outline"
+                }
+                size={60}
+                color={COLORS.disabled}
+              />
+              <Text style={styles.emptyText}>
+                {activeTab === "local"
+                  ? "Sem relatórios recentes (últimos 7 dias)."
+                  : "Nenhum histórico encontrado na nuvem."}
+              </Text>
+            </View>
+          }
+          refreshing={activeTab === "cloud" ? loadingCloud : false}
+          onRefresh={
+            activeTab === "cloud" ? loadCloudReports : loadLocalReports
+          }
+        />
+      )}
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeContainer: { flex: 1, backgroundColor: COLORS.background },
+  headerContainer: {
+    backgroundColor: COLORS.primary,
+    padding: SIZES.padding,
+    paddingBottom: 0,
+  },
+  headerTitle: { fontSize: SIZES.h1, fontWeight: "bold", color: COLORS.white },
+  headerSubtitle: {
+    fontSize: SIZES.h3,
+    color: COLORS.white,
+    opacity: 0.8,
+    marginBottom: 15,
+  },
+
+  tabContainer: { flexDirection: "row", marginTop: 10 },
+  tabButton: {
+    flex: 1,
+    paddingVertical: 12,
+    alignItems: "center",
+    borderBottomWidth: 3,
+    borderBottomColor: "transparent",
+  },
+  activeTab: { borderBottomColor: COLORS.secondary },
+  tabText: { color: "rgba(255,255,255,0.6)", fontWeight: "bold", fontSize: 16 },
+  activeTabText: { color: COLORS.white },
+
+  listContainer: { paddingVertical: SIZES.padding / 2 },
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.white,
+    marginHorizontal: SIZES.padding / 2,
+    marginVertical: SIZES.padding / 4,
+    padding: SIZES.padding / 1.5,
+    borderRadius: SIZES.radius,
+    shadowColor: COLORS.black,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  statusIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: SIZES.padding / 1.5,
+  },
+  statusIconOk: { backgroundColor: COLORS.secondary },
+  statusIconNok: { backgroundColor: COLORS.danger },
+  statusIconCollector: { backgroundColor: COLORS.primary },
+
+  cardInfo: { flex: 1 },
+  cardTitle: {
+    fontSize: SIZES.h3,
+    fontWeight: "600",
+    color: COLORS.textPrimary,
+  },
+  cardSubtitle: {
+    fontSize: SIZES.body,
+    color: COLORS.textSecondary,
+    marginTop: 2,
+  },
+
+  emptyContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "30%",
+  },
+  emptyText: {
+    marginTop: SIZES.padding,
+    fontSize: SIZES.h3,
+    color: COLORS.textSecondary,
+  },
+
+  loadingContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+  loadingText: { marginTop: 15, color: COLORS.textSecondary },
+});
+
+
+======================================================================
+ARQUIVO 14: src\services\api.js
+======================================================================
+
+// Arquivo: src/services/api.js
+
+const API_URL = "http://10.77.1.165:3000/api";
+
+export const fetchConfig = async () => {
+  try {
+    const response = await fetch(`${API_URL}/config`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Erro ao buscar configurações:", error);
+    throw error;
+  }
+};
+
+export const fetchReportHistory = async () => {
+  // A rota de histórico será criada na API no futuro
+  // Por enquanto retorna vazio para não dar erro na tela
+  return []; 
+};
+
+export const sendReport = async (reportData) => {
+  try {
+    const response = await fetch(`${API_URL}/enviar`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reportData),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Erro ao enviar relatório:", error);
+    throw error;
+  }
+};
