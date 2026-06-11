@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Mercante Checklist",
+    "slug": "mercante-checklist",
+    "version": "1.1.2",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.mercante.checklist",
+      "versionCode": 13,
+      "statusBar": {
+        "barStyle": "dark-content",
+        "backgroundColor": "transparent",
+        "translucent": true
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-font"],
+    "extra": {
+      "eas": {
+        "projectId": "263eaa27-fd5a-4f66-8c95-a77ebbf8e677"
+      }
+    }
+  }
+}
