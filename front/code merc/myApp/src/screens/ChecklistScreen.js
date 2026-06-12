@@ -299,10 +299,10 @@ export default function ChecklistScreen({ route, navigation }) {
         <FlatList
           data={items}
           renderItem={({ item }) => {
-            // 👇 AQUI: Define se é Empilhadeira (SIM/NÃO) ou Paleteira (OK/NÃO OK) 👇
-            const isEmpilhadeira = title.includes("Empilhadeira");
-            const labelPositiva = isEmpilhadeira ? "SIM" : "OK";
-            const labelNegativa = isEmpilhadeira ? "NÃO" : "NÃO OK";
+            // 👇 AQUI: Define que as Empilhadeiras E as Transpaleteiras usam SIM/NÃO 👇
+            const usaSimNao = title.includes("Empilhadeira") || title.includes("Transpaleteira");
+            const labelPositiva = usaSimNao ? "SIM" : "OK";
+            const labelNegativa = usaSimNao ? "NÃO" : "NÃO OK";
 
             return (
               <ChecklistItem

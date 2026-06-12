@@ -52,107 +52,24 @@
       { "text": "O visual externo da empilhadeira encontra-se em bom estado de conservação?", "gravity": "BAIXO" }
     ],
     "Transpaleteira": [
-      {
-        "text": "A buzina está funcionando corretamente?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "O botão de emergência (barriga / reversão de segurança) funciona corretamente?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O botão de parada de emergência desliga o equipamento corretamente?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O freio de serviço para completamente o equipamento?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O timão retorna à posição neutra corretamente após o uso?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "O acelerador responde suavemente sem travamentos ou falhas?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os garfos sobem e descem normalmente sem perda de força?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A elevação da carga ocorre sem ruídos ou movimentos bruscos?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Existe vazamento de óleo hidráulico na bomba, mangueiras ou conexões?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "As rodas apresentam cortes, rachaduras ou desgaste excessivo?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "As rodas giram livremente sem travamento?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Existe acúmulo de resíduos (plástico, fita, corda) nas rodas?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "Há vibração ou ruído anormal durante a movimentação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os garfos apresentam trincas, deformações ou desalinhamento?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A estrutura do equipamento apresenta trincas ou avarias visíveis?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "Existe algum componente solto (parafusos, proteções ou suportes)?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os cabos e conectores da bateria estão em bom estado?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O encaixe da bateria está firme e sem folgas?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O nível de carga da bateria é suficiente para o turno?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Há sinais de aquecimento, cheiro de queimado ou danos nos cabos?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A carcaça apresenta danos que possam comprometer a operação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "O equipamento está limpo e sem resíduos que possam interferir na operação?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "A identificação do equipamento (patrimônio / etiqueta) está visível?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "Estado da bateria da transpaleteira está adequado para operação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os controles operacionais (botões, acionamentos e comandos) da transpaleteira apresentam funcionamento adequado, sem falhas ou travamentos?",
-        "gravity": "CRÍTICO"
-      }
+      { "text": "O nível de água destilada da bateria está normal?", "gravity": "MÉDIO" },
+      { "text": "O nível de carga da bateria está adequado?", "gravity": "MÉDIO" },
+      { "text": "A elevação da torre está funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "Os cabos e terminais da bateria estão em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "A torre de elevação está subindo normalmente?", "gravity": "CRÍTICO" },
+      { "text": "Os garfos estão em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "As correntes estão em perfeito estado?", "gravity": "CRÍTICO" },
+      { "text": "O sinal de alerta sonoro (buzina) está funcionando corretamente?", "gravity": "CRÍTICO" },
+      { "text": "A máquina está livre de vazamento de óleo?", "gravity": "CRÍTICO" },
+      { "text": "A direção está alinhada?", "gravity": "CRÍTICO" },
+      { "text": "O freio de segurança opera perfeitamente sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "Os botões de comando de elevação da torre estão funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "O botão de emergência está funcionando normalmente?", "gravity": "CRÍTICO" },
+      { "text": "O braço do timão está com a mola em perfeito estado?", "gravity": "MÉDIO" },
+      { "text": "As rodas encontram-se em bom estado, sem problemas?", "gravity": "CRÍTICO" },
+      { "text": "O visual externo da paleteira encontra-se em bom estado de conservação?", "gravity": "BAIXO" }
     ],
+    
     "Paleteira": [
       {
         "text": "A paleteira eleva a carga nominal sem perda de pressão ou descida involuntária?",
