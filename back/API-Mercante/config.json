@@ -71,98 +71,23 @@
     ],
     
     "Paleteira": [
-      {
-        "text": "A paleteira eleva a carga nominal sem perda de pressão ou descida involuntária?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O sistema hidráulico responde corretamente ao bombeamento do timão?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A descida da carga ocorre de forma suave e controlada?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "Existe vazamento de óleo hidráulico na bomba, cilindro ou conexões?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "O nível de óleo hidráulico está adequado e sem sinais de contaminação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "As rodas de carga estão em bom estado (sem desgaste excessivo, rachaduras ou travamento)?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "As rodas direcionais giram livremente sem ruído ou resistência?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Existe acúmulo de resíduos (plástico, fita, corda, sujeira) nas rodas ou eixos?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "Há vibração ou ruído anormal durante a movimentação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os garfos apresentam trincas, deformações ou empenamento?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A estrutura da paleteira apresenta trincas, soldas quebradas ou deformações?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "Os garfos estão alinhados e sem desgaste excessivo nas pontas?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "O timão está firme e sem folgas excessivas?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "A mola de retorno do timão funciona corretamente?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "A alavanca de controle (subir / neutro / descer) funciona corretamente?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "Eixos, pinos e parafusos estão bem fixados e sem folgas?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Há desgaste excessivo nas articulações do sistema de elevação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Os pontos de lubrificação estão adequadamente engraxados?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "As articulações e pinos apresentam sinais de falta de lubrificação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "Há ruídos anormais indicativos de atrito ou falta de lubrificação?",
-        "gravity": "MÉDIO"
-      },
-      {
-        "text": "A paleteira está limpa e sem resíduos que possam comprometer o funcionamento?",
-        "gravity": "BAIXO"
-      },
-      {
-        "text": "Existe alguma avaria visível no equipamento que comprometa a operação?",
-        "gravity": "CRÍTICO"
-      },
-      {
-        "text": "A identificação do equipamento (nº patrimônio / etiqueta) está visível?",
-        "gravity": "BAIXO"
-      }
+      { "text": "O operador está utilizando os EPIs obrigatórios (como calçado de segurança com biqueira)?", "gravity": "CRÍTICO" },
+      { "text": "O operador é treinado e orientado para a movimentação de cargas com este equipamento?", "gravity": "CRÍTICO" },
+      { "text": "A paleteira possui, em local visível, a indicação de carga máxima de trabalho permitida?", "gravity": "BAIXO" },
+      { "text": "O sistema hidráulico (bomba e cilindro) está livre de aspetos que indiquem vazamento de óleo?", "gravity": "CRÍTICO" },
+      { "text": "A elevação dos garfos está ocorrendo normalmente, sem travamentos ou perda de pressão?", "gravity": "CRÍTICO" },
+      { "text": "O comando de descida (alavanca de alívio) responde prontamente ao ser acionado?", "gravity": "CRÍTICO" },
+      { "text": "O timão (alavanca de direção/tração) está firme e fácil de manobrar, sem folga excessiva?", "gravity": "CRÍTICO" },
+      { "text": "A mola de retorno do timão está funcionando corretamente (retorna o cabo à posição vertical)?", "gravity": "MÉDIO" },
+      { "text": "A manopla (puxador) do timão encontra-se em bom estado de conservação e bem fixada?", "gravity": "MÉDIO" },
+      { "text": "Os garfos encontram-se perfeitamente alinhados e sem torções ou deformações?", "gravity": "CRÍTICO" },
+      { "text": "A estrutura metálica (chassi) está em perfeito estado, sem trincas, soldas rompidas ou amassados graves?", "gravity": "CRÍTICO" },
+      { "text": "As rodas direcionais (traseiras/de apoio) estão em boas condições, sem quebras ou desgaste irregular?", "gravity": "CRÍTICO" },
+      { "text": "As rodas de carga (dianteiras/nos garfos) giram livremente e estão sem danos?", "gravity": "CRÍTICO" },
+      { "text": "Os rolamentos das rodas funcionam perfeitamente, sem ruídos estranhos ou travamentos durante a movimentação?", "gravity": "CRÍTICO" },
+      { "text": "Os eixos e pinos de articulação encontram-se devidamente lubrificados e encaixados?", "gravity": "MÉDIO" },
+      { "text": "O equipamento movimenta-se de forma suave, sem apresentar resistência fora do normal durante a tração?", "gravity": "CRÍTICO" },
+      { "text": "O visual externo da paleteira encontra-se em bom estado de conservação geral?", "gravity": "BAIXO" }
     ]
   },
   "forkliftsData": {

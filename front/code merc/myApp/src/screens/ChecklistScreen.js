@@ -299,8 +299,13 @@ export default function ChecklistScreen({ route, navigation }) {
         <FlatList
           data={items}
           renderItem={({ item }) => {
-            // 👇 AQUI: Define que as Empilhadeiras E as Transpaleteiras usam SIM/NÃO 👇
-            const usaSimNao = title.includes("Empilhadeira") || title.includes("Transpaleteira");
+            // 👇 AQUI: A regra 100% segura para os botões SIM / NÃO 👇
+            // Transformamos o título em letras minúsculas para evitar falhas
+            const tituloNome = title ? title.toLowerCase() : "";
+            
+            // Se o nome tiver "empilhadeira", "paleteira" ou "transpaleteira", usa SIM/NÃO
+            const usaSimNao = tituloNome.includes("empilhadeira") || tituloNome.includes("paleteira") || tituloNome.includes("transpaleteira");
+            
             const labelPositiva = usaSimNao ? "SIM" : "OK";
             const labelNegativa = usaSimNao ? "NÃO" : "NÃO OK";
 

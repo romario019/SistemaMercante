@@ -23,19 +23,24 @@ export default function ChecklistItem({ itemText, gravity, onSelect, selectedOpt
       </View>
 
       <View style={styles.buttonRow}>
-        {/* 👇 Usa as labels dinâmicas 👇 */}
+        {/* Botão Positivo: Forçando o visual para "SIM" */}
         <TouchableOpacity
           style={[styles.btn, selectedOption === positiveLabel && styles.btnOkSelected]}
           onPress={() => onSelect(itemText, positiveLabel)}
         >
-          <Text style={[styles.btnText, selectedOption === positiveLabel && styles.btnTextSelected]}>{positiveLabel}</Text>
+          <Text style={[styles.btnText, selectedOption === positiveLabel && styles.btnTextSelected]}>
+            SIM
+          </Text>
         </TouchableOpacity>
         
+        {/* Botão Negativo: Forçando o visual para "NÃO" */}
         <TouchableOpacity
           style={[styles.btn, selectedOption === negativeLabel && styles.btnNokSelected]}
           onPress={() => onSelect(itemText, negativeLabel)}
         >
-          <Text style={[styles.btnText, selectedOption === negativeLabel && styles.btnTextSelected]}>{negativeLabel}</Text>
+          <Text style={[styles.btnText, selectedOption === negativeLabel && styles.btnTextSelected]}>
+            NÃO
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

@@ -3,3 +3,7 @@ pm2 start server.js --name "API_Mercante"
 pm2 restart API_Mercante
 
 " dist " = npx expo export
+
+"dist monolito " npm run build-fast
+
+pm2 restart all
